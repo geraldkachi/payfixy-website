@@ -12,6 +12,20 @@
     /* --background: #0a0a0a;
     --foreground: #ededed; */
   }
+  .pause {
+    animation-play-state: paused;
+  }
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
 }
 
 body {
@@ -24,4 +38,29 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@keyframes flip {
+  0% {
+    transform: translateY(0deg);
+  }
+  50% {
+    transform: translateY(180deg);
+  }
+  100% {
+    transform: translateY(360deg);
+  }
+}
+
+.animate-flip {
+  animation: flip 6s infinite;
+}
+
+/* Custom CSS for Card Animations */
+.card {
+  transition: transform 0.5s ease;
+}
+
+.card.hovered {
+  transform: translateX(160px);
 }
