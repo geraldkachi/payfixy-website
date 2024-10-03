@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <motion.nav variants={navVariants} initial="hidden" whileInView="show" className={`relative max-w-[1120px] mx-auto bg-white bg-opacity-30 rounded-xl py-4`}>
+      <motion.nav variants={navVariants} initial="hidden" whileInView="show" className={`relative max-w-[1120px] mx-auto bg-white bg-opacity-30 py-4`}>
         <div className={`mx-auto flex justify-between items-center gap-8 px-3`}>
             <Link href="/" className="flex items-center gap-3">
               <img src="/icons/logo.svg" alt="logo" className=" object-contain cursor-pointer" />
@@ -24,16 +24,16 @@ const Navbar = () => {
            
           <div className="flex items-center gap-8">
           <div className="hidden md:flex items-center  text-[#121212] px-4 text-sm font-bold leading-[19.12px] tracking-[-2%]">
-              <Link href="/analytics" className={`${pathname == '/analytics' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
+              <Link href="/solutions" className={`${pathname == '/solutions' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
                 <span>Solutions</span>
               </Link>
-              <Link href="/analytics" className={`${pathname == '/analytics' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
+              <Link href="/pricing" className={`${pathname == '/pricing' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
                 <span>Pricing</span>
               </Link>
-              <Link href="/analytics" className={`${pathname == '/analytics' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
+              <Link href="/docs" className={`${pathname == '/docs' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
                 <span>Docs</span>
               </Link>
-              <Link href="/analytics" className={`${pathname == '/analytics' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
+              <Link href="/about" className={`${pathname == '/about' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
                 <span>About</span>
               </Link>
             </div>
