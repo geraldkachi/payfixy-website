@@ -1,49 +1,11 @@
 "use client"
 import Button from "@/components/Button";
+import CompanyLogos from "@/components/CompanyLogos";
 import Navbar from "@/components/Navbar";
+import TitleText from "@/components/TitleText";
 import { navVariants, slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
-
-type CardType = {
-  url: string;
-  title: string;
-  id: number;
-};
-
-const cards: CardType[] = [
-  {
-    url: "/icons/access.svg",
-    title: "Title 2",
-    id: 2,
-  },
-  {
-    url: "/icons/paycenter.svg",
-    title: "Title 3",
-    id: 3,
-  },
-  {
-    url: "/icons/flutter.svg",
-    title: "Title 4",
-    id: 4,
-  },
-  {
-    url: "/icons/network-solutions.svg",
-    title: "Title 4",
-    id: 5,
-  },
-  {
-    url: "/icons/nibss.svg",
-    title: "Title 4",
-    id: 6,
-  },
-  {
-    url: "/icons/netpost.svg",
-    title: "Title 4",
-    id: 6,
-  },
-];
 export default function Home() {
   return (
     <div className="">
@@ -60,7 +22,7 @@ export default function Home() {
               Effortless Payments, Anywhere, Anytime
             </motion.h1>
             <motion.p variants={slideIn("left", "tween", 0.1, 1)} initial="hidden" whileInView="show"
-            className="text-lg font-medium leading-[24px] tracking-[-1px] text-left text-gray-103 text-[#71737E]">
+              className="text-lg font-medium leading-[24px] tracking-[-1px] text-left text-gray-103 text-[#71737E]">
               Power your business with fast, secure, and reliable payments across borders. Join thousands of businesses using PayFixy to scale seamlessly
             </motion.p>
             <div className="w-full mt-4 md:block">
@@ -76,56 +38,79 @@ export default function Home() {
             />
           </div>
         </div>
-
       </header>
 
 
+      <CompanyLogos />
 
-      <div className="max-w-[1120px] mx-auto">
-      <div className="relative flex overflow-x-hidden group group-hover:pause">
-                <div className="py-6 animate-marquee whitespace-nowrap flex items-center gap-[48px] group group-hover:pause">
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[0].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[1].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[2].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[3].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[4].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[5].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                </div>
 
-                <div className="absolute top-0 py-6 animate-marquee2 whitespace-nowrap flex items-center gap-[48px] group group-hover:pause">
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[0].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[1].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[2].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[3].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[4].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                    <span className="mx-4 text-4xl w-[120px]">
-                        <Image src={cards[5].url} width={100} height={100} alt="scroll-image" className="h-full" />
-                    </span>
-                </div>
+      <section className="bg-[url('/icons/bg-lining.svg')] bg-[#2A2A29] py-20 md:py-40">
+        <div className="max-w-[1120px] mx-auto md:flex items-start flex-1 text-white px-3 xl:px-0">
+          <div className="flex flex-col flex-1 mb-10 md:mb-0">
+            <h1 className="text-4xl md:text-[38px] font-bold leading-[45.6px] tracking-[-1px]">Empower Your Business <br className="hidden md:block" /> with Next-Level <br className="hidden md:block" /> Payments</h1>
+          </div>
+
+          <div className="flex flex-col flex-1 gap-6">
+            <motion.div
+              variants={navVariants}
+              initial="hidden"
+              whileInView="show"
+              className="grid grid-cols-2 gap-9">
+              <TitleText
+                title="Fast and Secure Payments"
+                subtitle="Accept cards, bank transfers, and mobile wallets, all in one place"
+              />
+              <TitleText
+                title="Fast and Secure Payments"
+                subtitle="Accept cards, bank transfers, and mobile wallets, all in one place"
+              />
+              <TitleText
+                title="Fast and Secure Payments"
+                subtitle="Accept cards, bank transfers, and mobile wallets, all in one place"
+              />
+              <TitleText
+                title="Fast and Secure Payments"
+                subtitle="Accept cards, bank transfers, and mobile wallets, all in one place"
+              />
+            </motion.div>
+            <Button className="!text-white !bg-[#A51D21] !px-10 !rounded-lg w-max">Discover All Features</Button>
+          </div>
+
+        </div>
+      </section>
+
+      {/* discover */}
+      <section className="bg-white py-20 md:py-40">
+        <div className="max-w-[1120px] mx-auto md:flex items-center justify-between  flex-1 text-white px-3 xl:px-0">
+          <div className="flex flex-col flex-1">
+            <span className="border border-[#F4B6B6] bg-[#FDF4F4] text-[13px] leading-[13px] text-[#D14343] rounded-md w-max p-1">USE CASES</span>
+            <motion.h1
+              variants={navVariants}
+              initial="hidden"
+              whileInView="show"
+              className="text-4xl md:text-[46px] font-bold leading-[64.4px] text-[#2A2A29] my-2">The possibilities <br className="hidden md:block" />are endless
+            </motion.h1>
+            <p className="text-[#71737E] text-base leading-[24px] tracking-[-1px] mb-7">It doesn’t matter what kind of business you run, as longas you want to take your customers’ payment experienceto the next level, Payfixy’s your best bet!</p>
+            <Button className="!text-white !bg-[#A51D21] !px-10 !rounded-lg w-max">Get started</Button>
+          </div>
+
+
+          <div className="flex flex-col flex-1 gap-6">
+            <img src="/icons/possib-endless.svg" alt="" />
+          </div>
+        </div>
+      </section>
+      <section className="bg-[bg-[#2A2A29]] py-20 md:py-40">
+        <div className="max-w-[1120px] mx-auto md:flex items-start flex-1 text-white px-3 xl:px-0">
+          <div className="flex flex-col items-center my-7 md:my-16">
+            <div className="bg-[#A73636] text-white text-[13.68px] font-bold leading-[20px] track rounded-3xl px-4 py-2 mb-2 w-max tracking-[-0.4px]">DITCH THE OVERWHELM</div>
+            
+            <p className="text-center text-[#00000A] text-[30px] font-medium md:text-[34.88px] leading-[48.96px] md:leading-[48px] tracking-[-4%] md:tracking-[-5%]">Take Control Of Your Business <span className="text-[#01C467] ">Finances</span></p>
+            <p className="text-center mt-4 text-[#55555C] font-normal text-base md:text-lg leading-[28.8px] md:leading-[32.4px]">With Vollie, you can create timely invoices, get paid faster, make easy payments, and organise your finances— all in one place.</p>
+           
             </div>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }
