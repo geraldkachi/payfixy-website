@@ -85,13 +85,10 @@ const Navbar = () => {
                             <Link href="/about" className="w-full h-full whitespace-nowrap">About</Link>
                         </div>
 
-                        
-                    <div className='w-full grid grid-cols-1 gap-6 p-4'>
-                        <Button onClick={() => router.push('/login')} className="flex items-center justify-center !text-white !bg-[#A51D21] !border !border-white">Login</Button>
+                        <div className='w-full grid grid-cols-1 gap-6 p-4'>
+                            <Button onClick={() => router.push('/login')} className="flex items-center justify-center !text-white !bg-[#A51D21] !border !border-white">Login</Button>
+                        </div>
                     </div>
-                    </div>
-
-
                 </div>
             </ul>
         </div>

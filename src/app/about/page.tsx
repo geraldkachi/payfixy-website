@@ -6,6 +6,7 @@ import React from 'react'
 import { motion } from "framer-motion";
 import TitleText from '@/components/TitleText'
 import Button from '@/components/Button'
+import Footer from '@/components/Footer'
 
 const page = () => {
   return (
@@ -159,6 +160,7 @@ const page = () => {
         </div>
       </section>
 
+    <Footer />
     </div>
   )
 }

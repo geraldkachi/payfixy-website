@@ -8,6 +8,7 @@ import { navVariants } from '@/utils/motion';
 import Accordion from '@/components/Accordion';
 import { faqArr } from '@/contstants/faq-data';
 import CarouselContent from '@/components/CarouselContent'
+import Footer from '@/components/Footer'
 
 
 const Pricing = () => {
@@ -196,6 +197,8 @@ const Pricing = () => {
           </div>
         </section>
       </div>
+
+      <Footer />
     </div>
   )
 }

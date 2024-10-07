@@ -2,6 +2,7 @@
 import Button from "@/components/Button";
 import CarouselContent from "@/components/CarouselContent";
 import CompanyLogos from "@/components/CompanyLogos";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import TitleText from "@/components/TitleText";
 import { navVariants, slideIn } from "@/utils/motion";
@@ -127,6 +128,7 @@ export default function Home() {
 
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
