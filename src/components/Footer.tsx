@@ -7,8 +7,8 @@ const Footer = () => {
             <footer className="bg-white">
                 {/* <SubFooter /> */}
                 <div className="mx-auto w-full max-w-5xl">
-                    <div className="flex justify-between w-full gap-4">
-                        <div className="flex flex-wrap w-max gap-4">
+                    <div className="md:flex justify-between w-full gap-4">
+                        <div className="flex flex-wrap w-max h-max gap-4">
                             <img src="/icons/dss-company.svg" alt="" />
                             <img src="/icons/iso.svg" alt="" />
                             <img src="/icons/fintechnnr.svg" alt="" />
@@ -16,8 +16,8 @@ const Footer = () => {
 
                         <div className="grid grid-cols-2 gap-8 md:gap-20 px-3 md:px-0 py-6 lg:py-8 md:grid-cols-3 whitespace-nowrap">
                             <div>
-                                <h2 className="mb-3 md:mb-6 text-xs md:text-sm font-extrabold text-[#000024] uppercase leading-[25.2px] tracking-[-2%]">Company</h2>
-                                <ul className="text-[#808084] font-normal text-sm md:text-base leading-[17.64px] md:leading-[20.16px] tracking-[-1%] space-y-4 md:space-y-5">
+                                <h2 className="mb-3 md:mb-6 text-xs md:text-sm font-extrabold text-[#2A2A29] uppercase leading-[25.2px] tracking-[-2%]">Company</h2>
+                                <ul className="text-[#2A2A29] font-normal text-sm md:text-base leading-[17.64px] md:leading-[20.16px] tracking-[-1%] space-y-4 md:space-y-3">
                                     <li className="mb-2">
                                         <Link href="/about" className="hover:underline">About Us</Link>
                                     </li>
@@ -34,7 +34,7 @@ const Footer = () => {
                             </div>
                             <div>
                                 <h2 className="mb-3 md:mb-6 text-xs md:text-sm font-extrabold text-[#2A2A29] uppercase leading-[25.2px] tracking-[-2%]">Social Media</h2>
-                                <ul className="text-[#2A2A29] font-normal text-sm md:text-base leading-[17.64px] md:leading-[22.4px] space-y-4 md:space-y-5">
+                                <ul className="text-[#2A2A29] font-normal text-sm md:text-base leading-[17.64px] md:leading-[22.4px] space-y-4 md:space-y-3">
                                     <li className="mb-2">
                                         <a href="#" className="hover:underline">Twitter</a>
                                     </li>
@@ -51,7 +51,7 @@ const Footer = () => {
                             </div>
                             <div>
                                 <h2 className="mb-3 md:mb-6 text-xs md:text-sm font-extrabold text-[#2A2A29] uppercase leading-[25.2px] tracking-[-2%]">Legals</h2>
-                                <ul className="text-[#2A2A29] font-normal text-sm md:text-base leading-[17.64px] md:leading-[22.4px] space-y-4 md:space-y-5">
+                                <ul className="text-[#2A2A29] font-normal text-sm md:text-base leading-[17.64px] md:leading-[22.4px] space-y-4 md:space-y-3">
                                     <li className="mb-2">
                                         <Link href="#" className="hover:underline">IMS Policy</Link>
                                     </li>
@@ -75,7 +75,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <hr className="" />
+                    <hr className="bg-[#E4E7EC] my-3" />
                     <div className="px-3 md:px-0 py-6 flex md:items-center justify-center md:justify-between">
                         <Link href="/" className="flex items-center gap-3">
                             <img src="/icons/logo.svg" alt="logo" className=" object-contain cursor-pointer" />

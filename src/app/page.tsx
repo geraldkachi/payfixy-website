@@ -23,13 +23,15 @@ export default function Home() {
               className="w-full text-[35px] md:text-[58px] font-extrabold leading-[38px] sm:leading-[69.6px]  tracking-[-1px] text-left text-[#A73636]">
               Effortless Payments, Anywhere, Anytime
             </motion.h1>
-            <motion.p variants={slideIn("left", "tween", 0.1, 1)} initial="hidden" whileInView="show"
+            <motion.p variants={slideIn("left", "tween", 0.1, 1)} initial="hidn" whileInView="show"
               className="text-lg font-medium leading-[24px] tracking-[-1px] text-left text-gray-103 text-[#71737E]">
               Power your business with fast, secure, and reliable payments across borders. Join thousands of businesses using PayFixy to scale seamlessly
             </motion.p>
-            <div className="w-full mt-4 md:block">
+            <motion.div variants={navVariants}
+              initial="hidden"
+              whileInView="show" className="w-full mt-4 md:block">
               <Button className="!text-white !bg-[#A51D21] !px-10 !rounded-lg">Login</Button>
-            </div>
+            </motion.div>
           </div>
 
           <div className="flex flex-1 top-5 -right-[70px]">
