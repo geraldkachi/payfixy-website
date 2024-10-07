@@ -163,7 +163,7 @@ const Pricing = () => {
             </div>
 
             <div className="flex items-center justify-center mt-5">
-            <Button className="!text-white !bg-[#A51D21] md:!px-20 !rounded-xl">Get Started</Button>
+              <Button className="!text-white !bg-[#A51D21] md:!px-20 !rounded-xl">Get Started</Button>
             </div>
 
           </div>
@@ -172,29 +172,29 @@ const Pricing = () => {
 
         {/*  */}
         <section className="bg-[#2A2A29] py-10">
-        <div className="max-w-[1120px] mx-auto md:flex  items-center flex-1 text-white px-3 xl:px-0">
-          <div className="flex flex-col items-center my-7 md:my-16 w-full">
-            <div className="bg-[#A73636] text-white text-[13.68px] font-bold leading-[20px] track rounded-3xl px-4 py-2 mb-2 w-max tracking-[-0.4px]">Testimonials</div>
+          <div className="max-w-[1120px] mx-auto md:flex  items-center flex-1 text-white px-3 xl:px-0">
+            <div className="flex flex-col items-center my-7 md:my-16 w-full">
+              <div className="bg-[#A73636] text-white text-[13.68px] font-bold leading-[20px] track rounded-3xl px-4 py-2 mb-2 w-max tracking-[-0.4px]">Testimonials</div>
 
-            <p className="text-center text-white text-[30px] font-medium md:text-[34.88px] leading-[48.96px] md:leading-[48px] tracking-[-4%] md:tracking-[-5%]">Loved by ambitious <br className="hidden md:block" /> business at every stage</p>
+              <p className="text-center text-white text-[30px] font-medium md:text-[34.88px] leading-[48.96px] md:leading-[48px] tracking-[-4%] md:tracking-[-5%]">Loved by ambitious <br className="hidden md:block" /> business at every stage</p>
 
-            <CarouselContent />
+              <CarouselContent />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
         {/* red section */}
-      <section className="bgwhite py-20 md:py-40">
-        <div className="max-w-[1120px] mx-auto md:flex items-center justify-center flex-1 bg-[#AB1B1F] text-white px-3 xl:px-0 rounded-2xl">
-       
-          <div className="flex flex-col items-center py-7 md:my-16">
-            <p className="text-center text-white text-[30px] font-extrabold md:text-[46.13px] leading-[48.96px] md:leading-[56px] tracking-[-1.2px]">Ready to Elevate Your Business</p>
-            <p className="text-center mt-4 text-white font-normal text-base leading-[28.8px] md:leading-[32px]">Simple, hassle-free setup to get your business running.</p>
-            <Button className="!text-white !bg-[#2A2A29] !px-10 !rounded-lg w-max mt-8">Get started</Button>
-          </div>
+        <section className="bgwhite py-20 md:py-40">
+          <div className="max-w-[1120px] mx-auto md:flex items-center justify-center flex-1 bg-[#AB1B1F] text-white px-3 xl:px-0 rounded-2xl">
 
-        </div>
-      </section>
+            <div className="flex flex-col items-center py-7 md:my-16">
+              <p className="text-center text-white text-[30px] font-extrabold md:text-[46.13px] leading-[48.96px] md:leading-[56px] tracking-[-1.2px]">Ready to Elevate Your Business</p>
+              <p className="text-center mt-4 text-white font-normal text-base leading-[28.8px] md:leading-[32px]">Simple, hassle-free setup to get your business running.</p>
+              <Button className="!text-white !bg-[#2A2A29] !px-10 !rounded-lg w-max mt-8">Get started</Button>
+            </div>
+
+          </div>
+        </section>
       </div>
     </div>
   )

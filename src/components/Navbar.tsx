@@ -69,13 +69,29 @@ const Navbar = () => {
                         <li className='text-white'>
                             content here
                         </li>
-                        <div className='py-4 px-5 text-[#] h-max cursor-pointer'><Link className="w-full h-full whitespace-nowrap" href="/analytics">Analytics</Link> </div>
-                    </div>
+                        <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
+                            <Link href="/solutions" className="w-full h-full whitespace-nowrap">Solutions</Link>
+                        </div>
+                        <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
+                            <Link className="w-full h-full whitespace-nowrap" href="/analytics">Solutions</Link>
+                        </div>
+                        <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
+                            <Link href="/pricing" className="w-full h-full whitespace-nowrap">Pricing</Link>
+                        </div>
+                        <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
+                            <Link href="/docs" className="w-full h-full whitespace-nowrap">Docs</Link>
+                        </div>
+                        <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
+                            <Link href="/about" className="w-full h-full whitespace-nowrap">About</Link>
+                        </div>
 
-
-                    <div className='w-full grid grid-cols-1 gap-6 bg-[#2A2A33] p-4'>
+                        
+                    <div className='w-full grid grid-cols-1 gap-6 p-4'>
                         <Button onClick={() => router.push('/login')} className="flex items-center justify-center !text-white !bg-[#A51D21] !border !border-white">Login</Button>
                     </div>
+                    </div>
+
+
                 </div>
             </ul>
         </div>
