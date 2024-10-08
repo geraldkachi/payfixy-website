@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -9,9 +10,9 @@ const Footer = () => {
                 <div className="mx-auto w-full max-w-5xl">
                     <div className="md:flex justify-between w-full gap-4">
                         <div className="flex flex-wrap w-max h-max gap-4">
-                            <img src="/icons/dss-company.svg" alt="" />
-                            <img src="/icons/iso.svg" alt="" />
-                            <img src="/icons/fintechnnr.svg" alt="" />
+                            <Image width={100} height={100} src="/icons/dss-company.svg" alt="" />
+                            <Image width={100} height={100} src="/icons/iso.svg" alt="" />
+                            <Image width={100} height={100} src="/icons/fintechnnr.svg" alt="" />
                         </div>
 
                         <div className="grid grid-cols-2 gap-8 md:gap-20 px-3 md:px-0 py-6 lg:py-8 md:grid-cols-3 whitespace-nowrap">
@@ -36,16 +37,16 @@ const Footer = () => {
                                 <h2 className="mb-3 md:mb-6 text-xs md:text-sm font-extrabold text-[#2A2A29] uppercase leading-[25.2px] tracking-[-2%]">Social Media</h2>
                                 <ul className="text-[#2A2A29] font-normal text-sm md:text-base leading-[17.64px] md:leading-[22.4px] space-y-4 md:space-y-3">
                                     <li className="mb-2">
-                                        <a href="#" className="hover:underline">Twitter</a>
+                                        <Link href="https://x.com/payfixy" className="hover:underline">Twitter</Link>
                                     </li>
                                     <li className="mb-2">
-                                        <Link href="#" className="hover:underline">Facebook</Link>
+                                        <Link href=" https://www.facebook.com/payfixy" className="hover:underline">Facebook</Link>
                                     </li>
                                     <li className="mb-2">
-                                        <Link href="#" className="hover:underline">Instagram</Link>
+                                        <Link href="https://www.instagram.com/payfixy" className="hover:underline">Instagram</Link>
                                     </li>
                                     <li className="mb-2">
-                                        <Link href="#" className="hover:underline">LinkedIn</Link>
+                                        <Link href="https://www.instagram.com/payfixy/" className="hover:underline">LinkedIn</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -78,7 +79,7 @@ const Footer = () => {
                     <hr className="bg-[#E4E7EC] my-3" />
                     <div className="px-3 md:px-0 py-6 flex md:items-center justify-center md:justify-between">
                         <Link href="/" className="flex items-center gap-3">
-                            <img src="/icons/logo.svg" alt="logo" className=" object-contain cursor-pointer" />
+                            <Image src="/icons/logo.svg" alt="logo" className=" object-contain cursor-pointer" />
                         </Link>
 
                         <div className="hidden md:flex mt-4 sm:justify-center text-sm text-[#667185] leading-[20.3px] md:mt-0 space-x-5 rtl:space-x-reverse">

@@ -1,4 +1,5 @@
-import { TargetAndTransition, Variants } from "framer-motion"
+// import { TargetAndTransition, Variants } from "framer-motion"
+import { Variants } from "framer-motion"
 
 // interface Props {
 //   direction?: string
@@ -49,7 +50,7 @@ export const textVariant = (delay?: string|number) => {
   };
 
   // export const fadeIn = ({ direction, type, delay, duration }: Props) => {
-    export const fadeIn: any = (direction?: string | number, type?: string | number, delay?: string | number, duration?: string | number) => {
+    export const fadeIn = (direction?: string | number, type?: string | number, delay?: string | number, duration?: string | number) => {
       return {
       hidden: {
         x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
@@ -72,7 +73,7 @@ export const textVariant = (delay?: string|number) => {
   
 
   // export const zoomIn = ({ delay, duration }: Props)  => {
-    export const zoomIn: any = (delay?: string, duration?: string) => {
+    export const zoomIn = (delay?: string, duration?: string) => {
       return {
       hidden: {
         scale: 0,
@@ -91,8 +92,7 @@ export const textVariant = (delay?: string|number) => {
     };
   };
 
-  // export const slideIn = ({ direction, type, delay, duration }: Props) => {
-    export const slideIn: any = (direction?: string | number, type?: string, delay?: string | number, duration?: string | number) => {
+    export const slideIn = (direction?: string | number, type?: string, delay?: string | number, duration?: string | number) => {
       return {
       hidden: {
         x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
@@ -112,7 +112,7 @@ export const textVariant = (delay?: string|number) => {
   };
 
 // export const staggerContainer = ({ staggerChildren, delayChildren }: Props) => {
-  export const staggerContainer: TargetAndTransition | any = (staggerChildren?: string | number, delayChildren?: string | number) => {
+  export const staggerContainer = (staggerChildren?: string | number, delayChildren?: string | number) => {
     return {
       hidden: {},
       show: {

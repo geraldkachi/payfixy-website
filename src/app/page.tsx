@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
 import Button from "@/components/Button";
 import CarouselContent from "@/components/CarouselContent";
@@ -7,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import TitleText from "@/components/TitleText";
 import { navVariants, slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -23,7 +25,9 @@ export default function Home() {
               className="w-full text-[35px] md:text-[58px] font-extrabold leading-[38px] sm:leading-[69.6px]  tracking-[-1px] text-left text-[#A73636]">
               Effortless Payments, Anywhere, Anytime
             </motion.h1>
-            <motion.p variants={slideIn("left", "tween", 0.1, 1)} initial="hidn" whileInView="show"
+            <motion.p 
+            //@ts-ignore
+            variants={slideIn("left", "tween", 0.1, 1)} initial="hidn" whileInView="show"
               className="text-lg font-medium leading-[24px] tracking-[-1px] text-left text-gray-103 text-[#71737E]">
               Power your business with fast, secure, and reliable payments across borders. Join thousands of businesses using PayFixy to scale seamlessly
             </motion.p>
@@ -35,7 +39,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-1 top-5 -right-[70px]">
-            <img
+            <Image width={100} height={100}
               src="/icons/hero.svg"
               className="block"
               alt=""
@@ -100,7 +104,7 @@ export default function Home() {
 
 
           <div className="flex flex-col flex-1 gap-6">
-            <img src="/icons/possib-endless.svg" alt="" />
+            <Image width={100} height={100} src="/icons/possib-endless.svg" alt="" />
           </div>
         </div>
       </section>
