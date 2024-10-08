@@ -39,7 +39,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-1 top-5 -right-[70px]">
-            <Image width={100} height={100}
+            <Image
               src="/icons/hero.svg"
               className="block"
               alt=""
@@ -104,7 +104,7 @@ export default function Home() {
 
 
           <div className="flex flex-col flex-1 gap-6">
-            <Image width={100} height={100} src="/icons/possib-endless.svg" alt="" />
+            <Image src="/icons/possib-endless.svg" alt="" />
           </div>
         </div>
       </section>
