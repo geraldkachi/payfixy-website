@@ -106,7 +106,7 @@ export default function Home() {
 
 
           <div className="flex flex-col flex-1 gap-6">
-            <Image width={100} height={100} src="/icons/possib-endless.svg" alt="" />
+            <Image width={643.55} height={643.55} src="/icons/possib-endless.svg" alt="" />
           </div>
         </div>
       </section>

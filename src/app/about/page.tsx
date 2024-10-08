@@ -71,7 +71,7 @@ const page = () => {
             </div>
 
             <div className="flex flex-col flex-1 mb-10 md:mb-0" style={{ flex: 2 }}>
-              <Image width={100} height={100} src="/icons/why-choose-us.svg" alt="" />
+              <Image width={481} height={466} src="/icons/why-choose-us.svg" alt="" />
             </div>
 
           </div>
