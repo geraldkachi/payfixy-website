@@ -124,7 +124,7 @@ const page = () => {
           <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-[29.04px]">
             <Image width={100} height={100} src="/c-suits/nwachukwu.svg" alt="c-suits" className='mb-4' />
             <div className="flex flex-col text-center sm:text-start">
-              <p className="text-[#d0b1b1] text-base md:text-[27.33px] md:leading-[41px] tracking-[-3%] font-medium mb-2">Mr. Anthony Nwachukwu</p>
+              <p className="text-[#272727] text-base md:text-[27.33px] md:leading-[41px] tracking-[-3%] font-medium mb-2">Mr. Anthony Nwachukwu</p>
               <p className="text-[#A73636] text-sm md:text-[20.5px] leading-[27.33px] tracking-[1%] font-medium">Co-founder & CEO</p>
             </div>
           </div>
