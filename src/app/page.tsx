@@ -39,10 +39,12 @@ export default function Home() {
           </div>
 
           <div className="flex flex-1 top-5 -right-[70px]">
-            <Image
+            <Image 
               src="/icons/hero.svg"
               className="block"
               alt=""
+              width={574.57}
+              height={482} 
             />
           </div>
         </div>
@@ -65,20 +67,20 @@ export default function Home() {
               whileInView="show"
               className="grid grid-cols-2 gap-9">
               <TitleText
-                title="Fast and Secure Payments"
+                title="Multiple Payment Options"
                 subtitle="Accept cards, bank transfers, and mobile wallets, all in one place"
               />
               <TitleText
-                title="Fast and Secure Payments"
-                subtitle="Accept cards, bank transfers, and mobile wallets, all in one place"
+                title="Instant Settlements"
+                subtitle="Get your funds when you need them, with instant settlements."
               />
               <TitleText
-                title="Fast and Secure Payments"
-                subtitle="Accept cards, bank transfers, and mobile wallets, all in one place"
+                title="Global Reach"
+                subtitle="Expand your business across Africa and beyond"
               />
               <TitleText
-                title="Fast and Secure Payments"
-                subtitle="Accept cards, bank transfers, and mobile wallets, all in one place"
+                title="24/7 Customer Support"
+                subtitle="Always here to help, anytime, anywhere"
               />
             </motion.div>
             <Button className="!text-white !bg-[#A51D21] !px-10 !rounded-lg w-max">Discover All Features</Button>
@@ -104,7 +106,7 @@ export default function Home() {
 
 
           <div className="flex flex-col flex-1 gap-6">
-            <Image src="/icons/possib-endless.svg" alt="" />
+            <Image width={100} height={100} src="/icons/possib-endless.svg" alt="" />
           </div>
         </div>
       </section>

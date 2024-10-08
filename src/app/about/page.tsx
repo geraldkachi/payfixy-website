@@ -28,7 +28,7 @@ const page = () => {
       <section className="">
         <div className="max-w-[1140px] mx-auto md:flex items-center justify-center flex-1 ">
           <div className="flex flex-col items-center my-7 md:my-16 w-full">
-            <Image src="/icons/about-bg.svg" alt="" />
+            <Image width={1200} height={100} src="/icons/about-bg.svg" alt="" />
           </div>
         </div>
       </section>
@@ -71,7 +71,7 @@ const page = () => {
             </div>
 
             <div className="flex flex-col flex-1 mb-10 md:mb-0" style={{ flex: 2 }}>
-              <Image src="/icons/why-choose-us.svg" alt="" />
+              <Image width={100} height={100} src="/icons/why-choose-us.svg" alt="" />
             </div>
 
           </div>
@@ -84,19 +84,19 @@ const page = () => {
         <div className="max-w-[1120px] mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-10 flex-1 text- bg-[#FFFFFF] px-3 xl:px-0">
           {/* card1 */}
           <div className="flex flex-col p-7">
-            <Image src="/icons/pen.svg" alt="pen" className='mb-4 w-[24px] h-[24px]' />
+            <Image width={100} height={100} src="/icons/pen.svg" alt="pen" className='mb-4 w-[24px] h-[24px]' />
             <p className="text-[#272727] text-base leading-6 tracking-[-0.18px] font-bold mb-2">Customer-Centric</p>
             <p className="text-[#5C5C5C] text-sm leading-5 tracking-[-0.08px] font-normal">Your business success is our priority. We strive to make every transaction as smooth as possible.</p>
           </div>
           {/* card2 */}
           <div className="flex flex-col p-7">
-            <Image src="/icons/pen.svg" alt="pen" className='mb-4 w-[24px] h-[24px]' />
+            <Image width={100} height={100} src="/icons/pen.svg" alt="pen" className='mb-4 w-[24px] h-[24px]' />
             <p className="text-[#272727] text-base leading-6 tracking-[-0.18px] font-bold mb-2">Security & Transparency</p>
             <p className="text-[#5C5C5C] text-sm leading-5 tracking-[-0.08px] font-normal">We protect your payments with advanced security standards and guarantee clear, transparent pricing—no hidden fees</p>
           </div>
           {/* card3 */}
           <div className="flex flex-col p-7">
-            <Image src="/icons/pen.svg" alt="pen" className='mb-4 w-[24px] h-[24px]' />
+            <Image width={100} height={100} src="/icons/pen.svg" alt="pen" className='mb-4 w-[24px] h-[24px]' />
             <p className="text-[#272727] text-base leading-6 tracking-[-0.18px] font-bold mb-2">Innovation</p>
             <p className="text-[#5C5C5C] text-sm leading-5 tracking-[-0.08px] font-normal">We’re committed to continuously improving our platform, keeping it at the forefront of the payment industry.</p>
           </div>
@@ -114,7 +114,7 @@ const page = () => {
         <div className="max-w-[1120px] mx-auto grid sm:grid-cols-2 gap-10 flex-1 text- bg-[#FFFFFF] px-3 xl:px-0">
           {/* card1 */}
           <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-[29.04px]">
-            <Image src="/c-suits/mahmood.svg" alt="c-suits" className='mb-4' />
+            <Image width={100} height={100} src="/c-suits/mahmood.svg" alt="c-suits" className='mb-4' />
             <div className="flex flex-col text-center sm:text-start">
               <p className="text-[#272727] text-base md:text-[27.33px] md:leading-[41px] tracking-[-3%] font-medium mb-2">Mahmood Ahmadu, OON, MIo</p>
               <p className="text-[#A73636] text-sm md:text-[20.5px] leading-[27.33px] tracking-[1%] font-medium">Founder & Chairman</p>
@@ -122,7 +122,7 @@ const page = () => {
           </div>
           {/* card2 */}
           <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-[29.04px]">
-            <Image src="/c-suits/nwachukwu.svg" alt="c-suits" className='mb-4' />
+            <Image width={100} height={100} src="/c-suits/nwachukwu.svg" alt="c-suits" className='mb-4' />
             <div className="flex flex-col text-center sm:text-start">
               <p className="text-[#d0b1b1] text-base md:text-[27.33px] md:leading-[41px] tracking-[-3%] font-medium mb-2">Mr. Anthony Nwachukwu</p>
               <p className="text-[#A73636] text-sm md:text-[20.5px] leading-[27.33px] tracking-[1%] font-medium">Co-founder & CEO</p>
@@ -130,7 +130,7 @@ const page = () => {
           </div>
           {/* card3 */}
           <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-[29.04px]">
-            <Image src="/c-suits/kelechi.svg" alt="c-suits" className='mb-4' />
+            <Image width={100} height={100} src="/c-suits/kelechi.svg" alt="c-suits" className='mb-4' />
             <div className="flex flex-col text-center sm:text-start">
               <p className="text-[#272727] text-base md:text-[27.33px] md:leading-[41px] tracking-[-3%] font-medium mb-2">Mr. Kelechi Dozie</p>
               <p className="text-[#A73636] text-sm md:text-[20.5px] leading-[27.33px] tracking-[1%] font-medium">Managing Director</p>
@@ -138,7 +138,7 @@ const page = () => {
           </div>
           {/* card4 */}
           <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-[29.04px]">
-            <Image src="/c-suits/abi-ahmed.svg" alt="c-suits" className='mb-4' />
+            <Image width={100} height={100} src="/c-suits/abi-ahmed.svg" alt="c-suits" className='mb-4' />
             <div className="flex flex-col text-center sm:text-start">
               <p className="text-[#272727] text-base md:text-[27.33px] md:leading-[41px] tracking-[-3%] font-medium mb-2">Abi Ahmed Haruna</p>
               <p className="text-[#A73636] text-sm md:text-[20.5px] leading-[27.33px] tracking-[1%] font-medium">General Counsel & Company Secretary</p>

@@ -42,19 +42,19 @@ const Pricing = () => {
             <div className="my-2 text-base  text-[#333333] font-bold w-max tracking-[-2%] leading-[27.2px]">Transactions - Wallets, Mobile Money & Other</div>
             <div className="flex items-center gap-4 my-3">
               <div className="flex items-center gap-1 p-1.5 rounded-[281.25px] border border-[#9DA0AE]">
-                <Image  src="/icons/card-pay.svg" alt="" />
+                <Image width={12} height={12} src="/icons/card-pay.svg" alt="" />
                 <span className='text-[#9DA0AE] text-[10.13px] font-semibold leading-[13.5px] tracking-[-0.56px]'>Card</span>
               </div>
               <div className="flex items-center gap-1 p-1.5 rounded-[281.25px] border border-[#9DA0AE]">
-                <Image  src="/icons/transfer-pay.svg" alt="" />
+                <Image width={14} height={14} src="/icons/transfer-pay.svg" alt="" />
                 <span className='text-[#9DA0AE] text-[10.13px] font-semibold leading-[13.5px] tracking-[-0.56px]'>Transfer</span>
               </div>
               <div className="flex items-center gap-1 p-1.5 rounded-[281.25px] border border-[#9DA0AE]">
-                <Image  src="/icons/bank-pay.svg" alt="" />
+                <Image width={12} height={12} src="/icons/bank-pay.svg" alt="" />
                 <span className='text-[#9DA0AE] text-[10.13px] font-semibold leading-[13.5px] tracking-[-0.56px]'>Bank</span>
               </div>
               <div className="flex items-center gap-1 p-1.5 rounded-[281.25px] border border-[#9DA0AE]">
-                <Image  src="/icons/hash-pay.svg" alt="" />
+                <Image width={12} height={12} src="/icons/hash-pay.svg" alt="" />
                 <span className='text-[#9DA0AE] text-[10.13px] font-semibold leading-[13.5px] tracking-[-0.56px]'>Bank</span>
               </div>
             </div>
@@ -111,7 +111,7 @@ const Pricing = () => {
             <div className="my-2 text-base  text-[#333333] font-bold w-max tracking-[-2%] leading-[27.2px]">Transactions - Wallets, Mobile Money & Other</div>
             <div className="flex items-center gap-4 my-3">
               <div className="flex items-center gap-1 p-1.5 rounded-[281.25px] border border-[#9DA0AE]">
-                <Image  src="/icons/card-pay.svg" alt="" />
+                <Image width={12} height={12} src="/icons/card-pay.svg" alt="" />
                 <span className='text-[#9DA0AE] text-[10.13px] font-semibold leading-[13.5px] tracking-[-0.56px]'>Card</span>
               </div>
             </div>

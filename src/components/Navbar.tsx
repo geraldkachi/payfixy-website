@@ -19,21 +19,21 @@ const Navbar = () => {
             <motion.nav variants={navVariants} initial="hidden" whileInView="show" className={`relative max-w-[1120px] mx-auto bg-white bg-opacity-30 py-4`}>
                 <div className={`mx-auto flex justify-between items-center gap-8 px-3`}>
                     <Link href="/" className="flex items-center gap-3">
-                        <Image src="/icons/logo.svg" alt="logo" className=" object-contain cursor-pointer" />
+                        <Image src="/icons/logo.svg" alt="logo" width={100} height={100}  className=" object-contain cursor-pointer" />
                     </Link>
 
 
                     <div className="flex items-center gap-8">
                         <div className="hidden md:flex items-center  text-[#121212] px-4 text-sm font-bold leading-[19.12px] tracking-[-2%]">
-                            <Link href="/solutions" className={`${pathname == '/solutions' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
+                            {/* <Link href="/solutions" className={`${pathname == '/solutions' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
                                 <span>Solutions</span>
-                            </Link>
+                            </Link> */}
                             <Link href="/pricing" className={`${pathname == '/pricing' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
                                 <span>Pricing</span>
                             </Link>
-                            <Link href="/docs" className={`${pathname == '/docs' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
+                            {/* <Link href="/docs" className={`${pathname == '/docs' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
                                 <span>Docs</span>
-                            </Link>
+                            </Link> */}
                             <Link href="/about" className={`${pathname == '/about' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
                                 <span>About</span>
                             </Link>
@@ -62,7 +62,7 @@ const Navbar = () => {
                     <div>
                         <h1 className='w-full text-3xl font-bold text-[#A51D21] p-4 flex items-center justify-between bg-white'>
                             <Link href="/" className="cursor-pointer flex items-center gap-3 text-white" >
-                                <Image src="/icons/logo.svg" alt="logo" className=" object-contain cursor-pointer" />
+                                <Image src="/icons/logo.svg" alt="logo" width={100} height={100} className=" object-contain cursor-pointer" />
                             </Link>
 
                             <XCancel onClick={() => setNav(!nav)} />
@@ -70,18 +70,18 @@ const Navbar = () => {
                         <li className='text-white'>
                             content here
                         </li>
-                        <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
+                        {/* <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
                             <Link href="/solutions" className="w-full h-full whitespace-nowrap">Solutions</Link>
-                        </div>
-                        <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
+                        </div> */}
+                        {/* <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
                             <Link className="w-full h-full whitespace-nowrap" href="/analytics">Solutions</Link>
-                        </div>
+                        </div> */}
                         <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
                             <Link href="/pricing" className="w-full h-full whitespace-nowrap">Pricing</Link>
                         </div>
-                        <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
+                        {/* <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
                             <Link href="/docs" className="w-full h-full whitespace-nowrap">Docs</Link>
-                        </div>
+                        </div> */}
                         <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
                             <Link href="/about" className="w-full h-full whitespace-nowrap">About</Link>
                         </div>

@@ -10,9 +10,9 @@ const Footer = () => {
                 <div className="mx-auto w-full max-w-5xl">
                     <div className="md:flex justify-between w-full gap-4">
                         <div className="flex flex-wrap w-max h-max gap-4">
-                            <Image src="/icons/dss-company.svg" alt="" />
-                            <Image src="/icons/iso.svg" alt="" />
-                            <Image src="/icons/fintechnnr.svg" alt="" />
+                            <Image width={100} height={100} src="/icons/dss-company.svg" alt="" />
+                            <Image width={100} height={100} src="/icons/iso.svg" alt="" />
+                            <Image width={100} height={100} src="/icons/fintechnnr.svg" alt="" />
                         </div>
 
                         <div className="grid grid-cols-2 gap-8 md:gap-20 px-3 md:px-0 py-6 lg:py-8 md:grid-cols-3 whitespace-nowrap">
@@ -79,7 +79,7 @@ const Footer = () => {
                     <hr className="bg-[#E4E7EC] my-3" />
                     <div className="px-3 md:px-0 py-6 flex md:items-center justify-center md:justify-between">
                         <Link href="/" className="flex items-center gap-3">
-                            <Image src="/icons/logo.svg" alt="logo" className=" object-contain cursor-pointer" />
+                            <Image src="/icons/logo.svg"  width={100} height={100} alt="logo"  className=" object-contain cursor-pointer" />
                         </Link>
 
                         <div className="hidden md:flex mt-4 sm:justify-center text-sm text-[#667185] leading-[20.3px] md:mt-0 space-x-5 rtl:space-x-reverse">
