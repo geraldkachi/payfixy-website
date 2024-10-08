@@ -100,7 +100,7 @@ export default function Home() {
               whileInView="show"
               className="text-4xl md:text-[46px] font-bold leading-[64.4px] text-[#2A2A29] my-2">The possibilities <br className="hidden md:block" />are endless
             </motion.h1>
-            <p className="text-[#71737E] text-base leading-[24px] tracking-[-1px] mb-7">It doesn’t matter what kind of business you run, as longas you want to take your customers’ payment experienceto the next level, Payfixy’s your best bet!</p>
+            <p className="text-[#71737E] text-base leading-[24px] tracking-[-1px] mb-7">It doesn’t matter what kind of business you run, as longas you want to take your customers’ payment experienceto the next level, PayFixy’s your best bet!</p>
             <Button className="!text-white !bg-[#A51D21] !px-10 !rounded-lg w-max">Get started</Button>
           </div>
 
