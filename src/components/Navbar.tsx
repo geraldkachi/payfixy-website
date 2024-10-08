@@ -19,7 +19,7 @@ const Navbar = () => {
             <motion.nav variants={navVariants} initial="hidden" whileInView="show" className={`relative max-w-[1120px] mx-auto bg-white bg-opacity-30 py-4`}>
                 <div className={`mx-auto flex justify-between items-center gap-8 px-3`}>
                     <Link href="/" className="flex items-center gap-3">
-                        <Image src="/icons/logo.svg" alt="logo" width={100} height={100}  className=" object-contain cursor-pointer" />
+                        <Image src="/icons/logo.svg" alt="logo" className=" object-contain cursor-pointer" />
                     </Link>
 
 
@@ -62,7 +62,7 @@ const Navbar = () => {
                     <div>
                         <h1 className='w-full text-3xl font-bold text-[#A51D21] p-4 flex items-center justify-between bg-white'>
                             <Link href="/" className="cursor-pointer flex items-center gap-3 text-white" >
-                                <Image src="/icons/logo.svg" alt="logo" width={100} height={100} className=" object-contain cursor-pointer" />
+                                <Image src="/icons/logo.svg" alt="logo" className=" object-contain cursor-pointer" />
                             </Link>
 
                             <XCancel onClick={() => setNav(!nav)} />
