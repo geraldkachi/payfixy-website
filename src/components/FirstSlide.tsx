@@ -46,43 +46,43 @@ type CardType = {
     <div className="relative flex overflow-x-hidden group group-hover:pause">
               <div className="py-6 animate-marquee whitespace-nowrap flex items-center gap-[48px] group group-hover:pause">
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[0].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[0].url} alt="scroll-image" className="h-full" />
                   </span>
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[1].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[1].url} alt="scroll-image" className="h-full" />
                   </span>
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[2].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[2].url} alt="scroll-image" className="h-full" />
                   </span>
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[3].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[3].url} alt="scroll-image" className="h-full" />
                   </span>
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[4].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[4].url} alt="scroll-image" className="h-full" />
                   </span>
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[5].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[5].url} alt="scroll-image" className="h-full" />
                   </span>
               </div>
 
               <div className="absolute top-0 py-6 animate-marquee2 whitespace-nowrap flex items-center gap-[48px] group group-hover:pause">
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[0].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[0].url} alt="scroll-image" className="h-full" />
                   </span>
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[1].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[1].url} alt="scroll-image" className="h-full" />
                   </span>
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[2].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[2].url} alt="scroll-image" className="h-full" />
                   </span>
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[3].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[3].url} alt="scroll-image" className="h-full" />
                   </span>
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[4].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[4].url} alt="scroll-image" className="h-full" />
                   </span>
                   <span className="mx-4 text-4xl w-[120px]">
-                      <Image src={cards[5].url} width={100} height={100} alt="scroll-image" className="h-full" />
+                      <Image src={cards[5].url} alt="scroll-image" className="h-full" />
                   </span>
               </div>
           </div>
