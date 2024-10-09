@@ -17,10 +17,10 @@ const Pricing = () => {
       <Navbar />
 
       <div className={`max-w-7xl mx-auto flex flex-row items-center justify-center gap-5`}>
-        <div className="flex flex-col items-center my-7 md:my-14">
-          <div className="text-[#23272E] text-xs font-bold leading-5 tracking-[0.5px] rounded-3xl px-4 py-2 mb-5 w-max">PRICING</div>
+        <div className="flex flex-col items-center my-7 md:my-14 px-3 xl:px-0">
+          <div className="text-[#23272E] text-xs font-bold leading-5 tracking-[0.5px] rounded-3xl px-4 py-2 mb-3 md:mb-5 w-max">PRICING</div>
 
-          <p className={`text-center mt-2 text-[#23272E] text-[40px] md:text-[56px] font-extrabold md:leading-[72px] md:tracking-[-2px]`}>
+          <p className={`text-center mt-2 text-[#23272E] text-[40px] md:text-[56px] font-extrabold leading-[53px] md:leading-[72px] md:tracking-[-2px]`}>
             Transparent pricing that <br className='hidden md:block' /> grows with you
           </p>
         </div>
@@ -145,7 +145,7 @@ const Pricing = () => {
 
 
         {/* faq section */}
-        <section className="bg-[#F6F7F9] py-20">
+        <section className="bg-[#F6F7F9] md:py-20">
 
           <div className="max-w-[858px] mx-auto my-20 px-3">
             <div className="flex flex-col text-center gap-2 md:gap-[16px]">

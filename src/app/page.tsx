@@ -16,7 +16,7 @@ export default function Home() {
       <Navbar />
 
       <header className="w-full px-3 md:px-8 py-4 bg-blue-203">
-        <div className="sm:flex justify-between gap-3 max-w-[1120px] mx-auto md:py-14 md:-mt-10">
+        <div className="md:flex justify-between gap-3 max-w-[1120px] mx-auto md:py-14 md:-mt-10">
           <div className="flex flex-col justify-center flex-1 gap-[10px] my-10">
             <motion.h1
               variants={navVariants}
@@ -29,12 +29,12 @@ export default function Home() {
             //@ts-ignore
             variants={slideIn("left", "tween", 0.1, 1)} initial="hidn" whileInView="show"
               className="text-lg font-medium leading-[24px] tracking-[-1px] text-left text-gray-103 text-[#71737E]">
-              Power your business with fast, secure, and reliable payments across borders. Join thousands of businesses using PayFixy to scale seamlessly
+              Power your business with fast, secure, and reliable payments <br className="hidden md:block" />  across borders. Join thousands of businesses using PayFixy <br className="hidden md:block" /> to scale seamlessly
             </motion.p>
             <motion.div variants={navVariants}
               initial="hidden"
               whileInView="show" className="w-full mt-4 md:block">
-              <Button className="!text-white !bg-[#A51D21] !px-10 !rounded-lg">Login</Button>
+              <Button className="!text-white !bg-[#A51D21] !px-10 md:!px-14 !py-[16px] !rounded-lg">Login</Button>
             </motion.div>
           </div>
 
@@ -83,10 +83,30 @@ export default function Home() {
                 subtitle="Always here to help, anytime, anywhere"
               />
             </motion.div>
-            <Button className="!text-white !bg-[#A51D21] !px-10 !rounded-lg w-max">Discover All Features</Button>
+            <Button className="!text-white !bg-[#A51D21] !px-6 !py-[10px] !rounded-lg w-max">Discover All Features</Button>
           </div>
 
         </div>
+      </section>
+
+      <section className="bg-[url('/icons/bg-lining.svg')] bg-[#F5F5F5] py-20 md:py-40">
+      <div className="max-w-[1120px] mx-auto md:flex items-center justify-between  flex-1 text-white px-3 xl:px-0">
+          <div className="flex flex-col flex-1" style={{flex:1}}>
+            <span className="border border-[#F4B6B6] bg-[#FDF4F4] text-[13px] leading-[13px] text-[#D14343] rounded-md w-max p-1">Solutions</span>
+            <motion.h1
+              variants={navVariants}
+              initial="hidden"
+              whileInView="show"
+              className="text-4xl md:text-[34px] font-bold leading-[45.6px] text-[#2A2A29] my-2">Discover the <br className="hidden md:block" />power of Payfixy
+            </motion.h1>
+          </div>
+          <div className="flex flex-col flex-1" style={{flex:3}}>
+            <img src="/icons/discover-1.svg" alt="" />
+            <p className="text-[#40403E] text-base md:text-2xl leading-[24px] tracking-[-1px] mb-3">Seamless Checkout for Your Website or App</p>
+            <p className="text-[#71737E] text-base leading-[24px] tracking-[-1px] mb-7">Boost conversions with a user-friendly and fast checkout experience. PayFixy Checkout is optimized for speed and ease, making it easy for customers to complete their purchases quickly</p>
+            <Button className="!text-white !bg-[#A51D21] !px-6 !py-[10px] !rounded-lg w-max">See documentation</Button>
+          </div>
+          </div>
       </section>
 
       {/* discover */}
@@ -101,7 +121,7 @@ export default function Home() {
               className="text-4xl md:text-[46px] font-bold leading-[64.4px] text-[#2A2A29] my-2">The possibilities <br className="hidden md:block" />are endless
             </motion.h1>
             <p className="text-[#71737E] text-base leading-[24px] tracking-[-1px] mb-7">It doesn’t matter what kind of business you run, as longas you want to take your customers’ payment experienceto the next level, PayFixy’s your best bet!</p>
-            <Button className="!text-white !bg-[#A51D21] !px-10 !rounded-lg w-max">Get started</Button>
+            <Button className="!text-white !bg-[#A51D21] !px-6 !py-[10px] !rounded-lg w-max">Get started</Button>
           </div>
 
 
@@ -131,7 +151,7 @@ export default function Home() {
           <div className="flex flex-col items-center py-7 md:my-16">
             <p className="text-center text-white text-[30px] font-extrabold md:text-[46.13px] leading-[48.96px] md:leading-[56px] tracking-[-1.2px]">Ready to Elevate Your Business</p>
             <p className="text-center mt-4 text-white font-normal text-base leading-[28.8px] md:leading-[32px]">Simple, hassle-free setup to get your business running.</p>
-            <Button className="!text-white !bg-[#2A2A29] !px-10 !rounded-lg w-max mt-8">Get started</Button>
+            <Button className="!text-white !bg-[#2A2A29] !px-6 !py-[10px] !rounded-lg w-max mt-8">Get started</Button>
           </div>
 
         </div>
