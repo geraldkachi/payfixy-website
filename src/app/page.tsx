@@ -2,6 +2,7 @@
 "use client"
 import Button from "@/components/Button";
 import CarouselContent from "@/components/CarouselContent";
+import CompanyBusiness from "@/components/CompanyBusiness";
 import CompanyLogos from "@/components/CompanyLogos";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -25,9 +26,9 @@ export default function Home() {
               className="w-full text-[35px] md:text-[58px] font-extrabold leading-[38px] sm:leading-[69.6px]  tracking-[-1px] text-left text-[#A73636]">
               Effortless Payments, Anywhere, Anytime
             </motion.h1>
-            <motion.p 
-            //@ts-ignore
-            variants={slideIn("left", "tween", 0.1, 1)} initial="hidn" whileInView="show"
+            <motion.p
+              //@ts-ignore
+              variants={slideIn("left", "tween", 0.1, 1)} initial="hidn" whileInView="show"
               className="text-lg font-medium leading-[24px] tracking-[-1px] text-left text-gray-103 text-[#71737E]">
               Power your business with fast, secure, and reliable payments <br className="hidden md:block" />  across borders. Join thousands of businesses using PayFixy <br className="hidden md:block" /> to scale seamlessly
             </motion.p>
@@ -39,12 +40,12 @@ export default function Home() {
           </div>
 
           <div className="flex flex-1 top-5 -right-[70px]">
-            <Image 
+            <Image
               src="/icons/hero.svg"
               className="block"
               alt=""
               width={574.57}
-              height={482} 
+              height={482}
             />
           </div>
         </div>
@@ -89,9 +90,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[url('/icons/bg-lining.svg')] bg-[#F5F5F5] py-20 md:py-40">
-      <div className="max-w-[1120px] mx-auto md:flex items-center justify-between  flex-1 text-white px-3 xl:px-0">
-          <div className="flex flex-col flex-1" style={{flex:1}}>
+    <CompanyBusiness />
+      {/* <section className="bg-[url('/icons/bg-lining.svg')] bg-[#F5F5F5] py-20 md:py-40">
+        <div className="max-w-[1120px] mx-auto md:flex  justify-between  flex-1 text-white px-3 xl:px-0">
+          <div className="flex flex-col flex-1" style={{ flex: 1 }}>
             <span className="border border-[#F4B6B6] bg-[#FDF4F4] text-[13px] leading-[13px] text-[#D14343] rounded-md w-max p-1">Solutions</span>
             <motion.h1
               variants={navVariants}
@@ -99,15 +101,38 @@ export default function Home() {
               whileInView="show"
               className="text-4xl md:text-[34px] font-bold leading-[45.6px] text-[#2A2A29] my-2">Discover the <br className="hidden md:block" />power of Payfixy
             </motion.h1>
+            <div className="mt-[10px] hidden lg:block">
+              <ul className="text-[#2A2A29] font-semibold text-sm md:text-base leading-[17.64px] md:leading-[24px] tracking-[-1px] space-y-4 md:space-y-3">
+                <li className="mb-2">
+                  <span className=" text-[#A73636] font-bold">Online Checkout</span>
+                </li>
+                <li className="mb-2">
+                  <span className="">Merchant Dashboard</span>
+                </li>
+                <li className="mb-2">
+                  <span className="">Merchant Mobile App</span>
+                </li>
+                <li className="mb-2">
+                  <span className="">Payment Gateway</span>
+                </li>
+                <li className="mb-2">
+                  <span className="">PayX</span>
+                </li>
+                <li className="mb-2">
+                  <span className="">Tranxact</span>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="flex flex-col flex-1" style={{flex:3}}>
+          <div className="flex flex-col flex-1" style={{ flex: 3 }}>
+
             <img src="/icons/discover-1.svg" alt="" />
-            <p className="text-[#40403E] text-base md:text-2xl leading-[24px] tracking-[-1px] mb-3">Seamless Checkout for Your Website or App</p>
+            <p className="text-[#40403E] text-base md:text-2xl  font-bold leading-[24px] tracking-[-1px] mb-3">Seamless Checkout for Your Website or App</p>
             <p className="text-[#71737E] text-base leading-[24px] tracking-[-1px] mb-7">Boost conversions with a user-friendly and fast checkout experience. PayFixy Checkout is optimized for speed and ease, making it easy for customers to complete their purchases quickly</p>
             <Button className="!text-white !bg-[#A51D21] !px-6 !py-[10px] !rounded-lg w-max">See documentation</Button>
           </div>
-          </div>
-      </section>
+        </div>
+      </section> */}
 
       {/* discover */}
       <section className="bg-white py-20 md:py-40">
@@ -147,7 +172,7 @@ export default function Home() {
 
       <section className="bgwhite py-20 md:py-40">
         <div className="max-w-[1120px] mx-auto md:flex items-center justify-center flex-1 bg-[#AB1B1F] text-white px-3 xl:px-0 rounded-2xl">
-       
+
           <div className="flex flex-col items-center py-7 md:my-16">
             <p className="text-center text-white text-[30px] font-extrabold md:text-[46.13px] leading-[48.96px] md:leading-[56px] tracking-[-1.2px]">Ready to Elevate Your Business</p>
             <p className="text-center mt-4 text-white font-normal text-base leading-[28.8px] md:leading-[32px]">Simple, hassle-free setup to get your business running.</p>
