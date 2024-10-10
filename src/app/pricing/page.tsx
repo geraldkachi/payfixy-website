@@ -39,6 +39,7 @@ const Pricing = () => {
                 <span className="ms-1 text-xl font-normal text-[#808080]">/transaction</span>
               </p>
             </div>
+            <div className="p-3">
             <div className="my-2 text-base  text-[#333333] font-bold w-max tracking-[-2%] leading-[27.2px]">Transactions - Wallets, Mobile Money & Other</div>
             <div className="flex items-center gap-4 my-3">
               <div className="flex items-center gap-1 p-1.5 rounded-[281.25px] border border-[#9DA0AE]">
@@ -58,9 +59,8 @@ const Pricing = () => {
                 <span className='text-[#9DA0AE] text-[10.13px] font-semibold leading-[13.5px] tracking-[-0.56px]'>Bank</span>
               </div>
             </div>
-            {/* <div className="flex flex-col flex-1 justify-between gap-y-10 pt-6 pb-8 px-6"> */}
             <Button variant='outline' title="Contact sales" className="!w-full flex items-center justify-center   border !border-[#A73636] p-3 my-2 text-base rounded-lg text-[#A73636] font-bold tracking-[-2%] leading-[27.2px]" />
-            {/* </div> */}
+            </div>
           </div>
 
 
@@ -108,6 +108,8 @@ const Pricing = () => {
                 <span className="ms-1 text-xl font-normal text-[#808080]">/transaction</span>
               </p>
             </div>
+            <div className="p-3">
+
             <div className="my-2 text-base  text-[#333333] font-bold w-max tracking-[-2%] leading-[27.2px]">Transactions - Wallets, Mobile Money & Other</div>
             <div className="flex items-center gap-4 my-3">
               <div className="flex items-center gap-1 p-1.5 rounded-[281.25px] border border-[#9DA0AE]">
@@ -115,9 +117,8 @@ const Pricing = () => {
                 <span className='text-[#9DA0AE] text-[10.13px] font-semibold leading-[13.5px] tracking-[-0.56px]'>Card</span>
               </div>
             </div>
-            {/* <div className="flex flex-col flex-1 justify-between gap-y-10 pt-6 pb-8 px-6"> */}
             <Button variant='outline' title="Contact sales" className="!w-full flex items-center justify-center   border !border-[#A73636] p-3 my-2 text-base rounded-lg text-[#A73636] font-bold tracking-[-2%] leading-[27.2px]" />
-            {/* </div> */}
+            </div>
           </div>
 
 
