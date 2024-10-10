@@ -76,7 +76,7 @@ export default function Home() {
                 subtitle="Get your funds when you need them, with instant settlements."
               />
               <TitleText
-                title="Global Reach"
+                title=" Split payments"
                 subtitle="Expand your business across Africa and beyond"
               />
               <TitleText
@@ -91,48 +91,6 @@ export default function Home() {
       </section>
 
     <CompanyBusiness />
-      {/* <section className="bg-[url('/icons/bg-lining.svg')] bg-[#F5F5F5] py-20 md:py-40">
-        <div className="max-w-[1120px] mx-auto md:flex  justify-between  flex-1 text-white px-3 xl:px-0">
-          <div className="flex flex-col flex-1" style={{ flex: 1 }}>
-            <span className="border border-[#F4B6B6] bg-[#FDF4F4] text-[13px] leading-[13px] text-[#D14343] rounded-md w-max p-1">Solutions</span>
-            <motion.h1
-              variants={navVariants}
-              initial="hidden"
-              whileInView="show"
-              className="text-4xl md:text-[34px] font-bold leading-[45.6px] text-[#2A2A29] my-2">Discover the <br className="hidden md:block" />power of Payfixy
-            </motion.h1>
-            <div className="mt-[10px] hidden lg:block">
-              <ul className="text-[#2A2A29] font-semibold text-sm md:text-base leading-[17.64px] md:leading-[24px] tracking-[-1px] space-y-4 md:space-y-3">
-                <li className="mb-2">
-                  <span className=" text-[#A73636] font-bold">Online Checkout</span>
-                </li>
-                <li className="mb-2">
-                  <span className="">Merchant Dashboard</span>
-                </li>
-                <li className="mb-2">
-                  <span className="">Merchant Mobile App</span>
-                </li>
-                <li className="mb-2">
-                  <span className="">Payment Gateway</span>
-                </li>
-                <li className="mb-2">
-                  <span className="">PayX</span>
-                </li>
-                <li className="mb-2">
-                  <span className="">Tranxact</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="flex flex-col flex-1" style={{ flex: 3 }}>
-
-            <img src="/icons/discover-1.svg" alt="" />
-            <p className="text-[#40403E] text-base md:text-2xl  font-bold leading-[24px] tracking-[-1px] mb-3">Seamless Checkout for Your Website or App</p>
-            <p className="text-[#71737E] text-base leading-[24px] tracking-[-1px] mb-7">Boost conversions with a user-friendly and fast checkout experience. PayFixy Checkout is optimized for speed and ease, making it easy for customers to complete their purchases quickly</p>
-            <Button className="!text-white !bg-[#A51D21] !px-6 !py-[10px] !rounded-lg w-max">See documentation</Button>
-          </div>
-        </div>
-      </section> */}
 
       {/* discover */}
       <section className="bg-white py-20 md:py-40">

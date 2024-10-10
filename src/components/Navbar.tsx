@@ -15,8 +15,8 @@ const Navbar = () => {
     const router = useRouter();
 
     return (
-        <div>
-            <motion.nav variants={navVariants} initial="hidden" whileInView="show" className={`relative max-w-[1120px] mx-auto bg-white bg-opacity-30 py-4`}>
+        <div className=" w-full bg-white">
+            <motion.nav variants={navVariants} initial="hidden" whileInView="show" className={`relative max-w-[1120px] mx-auto !bg-white bg-opacity-30 py-4`}>
                 <div className={`mx-auto flex justify-between items-center gap-8 px-3`}>
                     <Link href="/" className="flex items-center gap-3">
                         <Image src="/icons/logo.svg" alt="logo" width={100} height={100}  className=" object-contain cursor-pointer" />
@@ -57,8 +57,8 @@ const Navbar = () => {
             </motion.nav>
 
 
-            <ul className={nav ? 'fixed left-0 top-0 w-full h-svh z-20 border-r bg-white ease-in-out duration-500 shadow-lg' : 'hidden ease-in-out duration-500 fixed left-[-100%]'}>
-                <div className="flex flex-col justify-between h-full overflow-scroll">
+            <ul className={nav ? 'fixed left-0 top-0 w-full h-svh z-20 border-r !bg-white ease-in-out duration-500 shadow-lg' : 'hidden ease-in-out duration-500 fixed left-[-100%]'}>
+                <div className="flex flex-col justify-between h-full overflow-scroll bg-white">
                     <div>
                         <h1 className='w-full text-3xl font-bold text-[#A51D21] p-4 flex items-center justify-between bg-white'>
                             <Link href="/" className="cursor-pointer flex items-center gap-3 text-white" >
