@@ -6,7 +6,7 @@ const CarouselContent = () => {
   const content = [
     {
       header: "Streamline Payments",
-      title: 'The startup integrated Payfixy into their platform, allowing customers to make payments easily through various methods—credit cards, bank transfers, and digital wallets.',
+      title: 'The startup integrated PayFixy into their platform, allowing customers to make payments easily through various methods—credit cards, bank transfers, and digital wallets.',
     },
     { header: "Scale Effectively", title: 'As customer base grew, our scalable payment solutions adapted to your needs, allowing you to handle increasing transaction volumes without a hitch.', }
   ];

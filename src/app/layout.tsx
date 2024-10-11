@@ -17,7 +17,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "PayFixy",
-  description: "Payfixy we help you build and grow your business through our multiple seamless payment solutions.",
+  description: "PayFixy we help you build and grow your business through our multiple seamless payment solutions.",
 };
 
 export default function RootLayout({

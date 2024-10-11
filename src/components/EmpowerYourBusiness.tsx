@@ -29,7 +29,7 @@ const EmpowerYourBusiness = () => {
               />
               <TitleText
                 title=" Split payments"
-                subtitle="Expand your business across Africa and beyond"
+                subtitle="Settle to multiple accounts with ease!"
               />
               <TitleText
                 title="24/7 Customer Support"
