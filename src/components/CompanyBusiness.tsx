@@ -81,7 +81,7 @@ const CompanyBusiness = () => {
                 </div>
                 <div className="flex flex-col flex-1" style={{ flex: 3 }}>
 
-                     <Image src={itemImageMap[activeIndex].img} width={748} height={327} alt={itemImageMap[activeIndex].title} />
+                     <Image src={itemImageMap[activeIndex].img} width={748} height={327} alt={itemImageMap[activeIndex].title} className='w-full' />
                     <p className="text-[#40403E] text-base md:text-2xl  font-bold leading-[24px] tracking-[-1px] mb-3">{itemImageMap[activeIndex].title}</p>
                     <p className="text-[#71737E] text-base leading-[24px] tracking-[-1px] mb-7">{itemImageMap[activeIndex]?.subtile}</p>
                     {activeIndex == 2 && (
