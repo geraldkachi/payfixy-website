@@ -173,20 +173,10 @@ const Pricing = () => {
         {/* end faq */}
 
         {/*  */}
-        <section className="bg-[#2A2A29] py-10">
-          <div className="max-w-[1120px] mx-auto md:flex  items-center flex-1 text-white px-3 xl:px-0">
-            <div className="flex flex-col items-center my-7 md:my-16 w-full">
-              <div className="bg-[#A73636] text-white text-[13.68px] font-bold leading-[20px] track rounded-3xl px-4 py-2 mb-2 w-max tracking-[-0.4px]">Testimonials</div>
-
-              <p className="text-center text-white text-[30px] font-medium md:text-[34.88px] leading-[48.96px] md:leading-[48px] tracking-[-4%] md:tracking-[-5%]">Loved by ambitious <br className="hidden md:block" /> business at every stage</p>
-
-              <CarouselContent />
-            </div>
-          </div>
-        </section>
+        <CarouselContent />
 
         {/* red section */}
-        <section className="bgwhite py-20 md:py-40">
+        <section className="bg-white py-20 md:py-40">
           <div className="max-w-[1120px] mx-auto md:flex items-center justify-center flex-1 bg-[#AB1B1F] text-white px-3 xl:px-0 rounded-2xl">
 
             <div className="flex flex-col items-center py-7 md:my-16">

@@ -44,7 +44,7 @@ const SecondSlide = () => {
     return (
         <div className="max-w-[920px] mx-auto">
             <div className="relative flex overflow-x-hidden group group-hover:pause">
-                <div className="animate-marquee whitespace-nowrap flex items-center justify-evenly gap-[48px] group group-hover:pause">
+                <div className="animate-marquee11 whitespace-nowrap flex items-center justify-evenly gap-[48px] group group-hover:pause">
                     <span className="mx-4 text-4xl w-max flex items-center">
                         <Image src={cards[0].url} width={80} height={80} alt="scroll-image" className="h-full" />
                     </span>
@@ -65,7 +65,7 @@ const SecondSlide = () => {
                     </span>
                 </div>
 
-                <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center justify-evenly gap-[48px] group group-hover:pause">
+                <div className="absolute top-0 animate-marquee22 whitespace-nowrap flex items-center justify-evenly gap-[48px] group group-hover:pause">
                     <span className="mx-4 text-4xl w-max">
                         <Image src={cards[0].url} width={80} height={80} alt="scroll-image" className="h-full" />
                     </span>

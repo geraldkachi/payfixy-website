@@ -149,7 +149,7 @@ const page = () => {
 
 
     {/* red section */}
-    <section className="bgwhite py-20 md:py-40">
+    <section className="bg-white py-20 md:py-40">
         <div className="max-w-[1120px] mx-auto md:flex items-center justify-center flex-1 bg-[#AB1B1F] text-white px-3 xl:px-0 rounded-2xl">
        
           <div className="flex flex-col items-center py-7 md:my-16">
