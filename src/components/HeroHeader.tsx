@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
 import React from 'react'
 import { motion } from "framer-motion";
@@ -18,7 +19,7 @@ const HeroHeader = () => {
                         Effortless Payments, Anywhere, Anytime
                     </motion.h1>
                     <motion.p
-                        //@ts-ignore
+                        //@ts-expect-error
                         variants={slideIn("left", "tween", 0.1, 1)} initial="hidn" whileInView="show"
                         className="text-lg font-medium leading-[24px] tracking-[-1px] text-left text-gray-103 text-[#71737E]">
                         Power your business with fast, secure, and reliable payments <br className="hidden md:block" />  across borders. Join thousands of businesses using PayFixy <br className="hidden md:block" /> to scale seamlessly

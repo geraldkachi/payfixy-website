@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Button from './Button';
 import { motion } from "framer-motion"
 import { navVariants } from '@/utils/motion';
+import Image from 'next/image';
 const CompanyBusiness = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     // Define a mapping between the item and the corresponding image
@@ -62,7 +63,7 @@ const CompanyBusiness = () => {
                         variants={navVariants}
                         initial="hidden"
                         whileInView="show"
-                        className="text-4xl md:text-[34px] font-bold leading-[45.6px] text-[#2A2A29] my-2">Discover the <br className="hidden md:block" />power of Payfixy
+                        className="text-4xl md:text-[34px] font-bold leading-[45.6px] text-[#2A2A29] my-2">Discover the <br className="hidden md:block" />power of PayFixy
                     </motion.h1>
                     <div className="mt-[10px] hidden lg:block">
                         <ul className="text-[#2A2A29] font-semibold text-sm md:text-base leading-[17.64px] md:leading-[24px] tracking-[-1px] space-y-4 md:space-y-3">
@@ -80,13 +81,13 @@ const CompanyBusiness = () => {
                 </div>
                 <div className="flex flex-col flex-1" style={{ flex: 3 }}>
 
-                     <img src={itemImageMap[activeIndex].img} alt={itemImageMap[activeIndex].title} />
+                     <Image src={itemImageMap[activeIndex].img} width={748} alt={itemImageMap[activeIndex].title} />
                     <p className="text-[#40403E] text-base md:text-2xl  font-bold leading-[24px] tracking-[-1px] mb-3">{itemImageMap[activeIndex].title}</p>
                     <p className="text-[#71737E] text-base leading-[24px] tracking-[-1px] mb-7">{itemImageMap[activeIndex]?.subtile}</p>
                     {activeIndex == 2 && (
                         <div className="flex items-center gap-5">
-                            <img src="/icons/app-play.svg" alt="" />
-                            <img src="/icons/google-play.svg" alt="" />
+                            <Image width={148.5} src="/icons/app-play.svg" alt="" />
+                            <Image width={148.5} src="/icons/google-play.svg" alt="" />
                         </div>
                     )}
                     {itemImageMap[activeIndex].btnText && (
