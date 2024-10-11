@@ -1,11 +1,10 @@
+"use client"
 import React, { useState } from 'react'
 import Button from './Button';
 import { motion } from "framer-motion"
 import { navVariants } from '@/utils/motion';
 const CompanyBusiness = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-
-
     // Define a mapping between the item and the corresponding image
     const itemImageMap = [
         {
