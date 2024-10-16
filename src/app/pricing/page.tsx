@@ -71,7 +71,7 @@ const Pricing = () => {
 
                 <div className="flex flex-col">
                     <span className="leading-[24px] font-semibold tracking-[-5%] text-sm md:text-base text-[#000000]">Flexible Pricing Tailored to Your Needs</span>
-                    <span className="leading-[24px] font-medium tracking-[-5%] text-xs md:text-sm text-[#000000]">At Payfixy, we understand that every business is unique. That’s why we offer competitive, flexible pricing designed to scale with your business. Whether you're processing small transactions or handling high-volume payments, we are committed to offering you the best value.</span>
+                    <span className="leading-[24px] font-medium tracking-[-5%] text-xs md:text-sm text-[#000000]">At Payfixy, we understand that every business is unique. That’s why we offer competitive, flexible pricing designed to scale with your business. Whether you&apos;re processing small transactions or handling high-volume payments, we are committed to offering you the best value.</span>
                 </div>
                 </li>
                 <li className="flex items-start space-x-3">
@@ -87,7 +87,7 @@ const Pricing = () => {
 
                 <div className="flex flex-col">
                   <span className="leading-[24px] font-semibold tracking-[-5%] text-sm md:text-base text-[#000000]">Custom Pricing Solutions</span>
-                  <span className="leading-[24px] font-medium tracking-[-5%] text-xs md:text-sm text-[#000000]">We believe in providing solutions that work for you. Our team is open to discussing custom pricing options based on your transaction needs. Let’s work together to create a plan that aligns perfectly with your business.</span>
+                  <span className="leading-[24px] font-medium tracking-[-5%] text-xs md:text-sm text-[#000000]">We believe in providing solutions that work for you. Our team is open to discussing custom pricing options based on your transaction needs. Let&apos;s work together to create a plan that aligns perfectly with your business.</span>
                 </div>
                 </li>
 
