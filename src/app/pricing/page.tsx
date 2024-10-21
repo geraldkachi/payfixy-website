@@ -62,9 +62,14 @@ const Pricing = () => {
 
 
           <div className="bg-[#FFF7F7] rounded-[14px] flex flex-col border border-[#F9DADA]">
+
+            <div className='flex flex-col items-start md:items-center justify-center mx-5 mt-4'>
+              <h1 className='text-2xl md:text-[44px] font-bold mb-3'>Pricing</h1>
+              <p className='text-base md:text-center'>We’re happy to discuss customized pricing options to offer you the best <br className='hidden md:block' /> rates for volume-based transactions.</p>
+            </div>
             <div className="flex flex-col flex-1 justify-between gap-y-10 pt-6 pb-8 px-6">
               <ul role="list" className="mt-4 space-y-3">
-                <p className="text-[#333333] text-xs leading-4 tracking-[2%] font-semibold">INCLUDES:</p>
+                <p className="text-[#333333] text-xs leading-4 tracking-[2%] font-semibold">PRICE INCLUDES:</p>
 
                 <li className="flex items-start space-x-3">
                   <Image width={26} height={26} src="/icons/check-pay.svg" alt="price-check" />
