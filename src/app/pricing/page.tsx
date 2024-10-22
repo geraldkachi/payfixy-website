@@ -24,6 +24,12 @@ const Pricing = () => {
 
       <div className="flex flex-col gap-[6px] px-3 xl:px-0">
         {/* firet section  */}
+        {/* <div className="flex items-center">
+          <h1 className='text-2xl md:text-[44px] font-bold mb-3'>Pricing</h1>
+        </div> */}
+        <div className='flex flex-col items-start md:items-center justify-center mx-5 mt-4'>
+              <p className='text-base md:text-center'>We’re happy to discuss customized pricing options to offer you the best <br className='hidden md:block' /> rates for volume-based transactions.</p>
+            </div>
         <div className="mt-1 space-y-3 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-1 md:grid-cols-1 sm:gap-6 md:max-w-[840px] md:mx-auto md:p-3 border border-[#E6E6E6] rounded-[20px] h-max mb-5">
           {/* <div className="bg-white rounded-lg shadow-sm flex flex-col h-max">
 
@@ -63,37 +69,34 @@ const Pricing = () => {
 
           <div className="bg-[#FFF7F7] rounded-[14px] flex flex-col border border-[#F9DADA]">
 
-            <div className='flex flex-col items-start md:items-center justify-center mx-5 mt-4'>
-              <h1 className='text-2xl md:text-[44px] font-bold mb-3'>Pricing</h1>
-              <p className='text-base md:text-center'>We’re happy to discuss customized pricing options to offer you the best <br className='hidden md:block' /> rates for volume-based transactions.</p>
-            </div>
+          
             <div className="flex flex-col flex-1 justify-between gap-y-10 pt-6 pb-8 px-6">
               <ul role="list" className="mt-4 space-y-3">
-                <p className="text-[#333333] text-xs leading-4 tracking-[2%] font-semibold">PRICE INCLUDES:</p>
+                <p className="text-[#333333] text-xs leading-4 tracking-[2%] font-semibold">OUR OFFER INCLUDES:</p>
 
                 <li className="flex items-start space-x-3">
                   <Image width={26} height={26} src="/icons/check-pay.svg" alt="price-check" />
 
-                <div className="flex flex-col">
+                  <div className="flex flex-col">
                     <span className="leading-[24px] font-semibold tracking-[-5%] text-sm md:text-base text-[#000000]">Flexible Pricing Tailored to Your Needs</span>
                     <span className="leading-[24px] font-medium tracking-[-5%] text-xs md:text-sm text-[#000000]">At Payfixy, we understand that every business is unique. That’s why we offer competitive, flexible pricing designed to scale with your business. Whether you&apos;re processing small transactions or handling high-volume payments, we are committed to offering you the best value.</span>
-                </div>
+                  </div>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Image width={26} height={26} src="/icons/check-pay.svg" alt="price-check" />
 
-                <div className="flex flex-col">
-                  <span className="leading-[24px] font-semibold tracking-[-5%] text-sm md:text-base text-[#000000]">Volume-Based Discounts</span>
-                  <span className="leading-[24px] font-medium tracking-[-5%] text-xs md:text-sm text-[#000000]">The more you grow, the more you save. Our pricing model is designed to reward higher transaction volumes with significant savings, ensuring you get the most out of your payment processing experience.</span>
-                </div>
+                  <div className="flex flex-col">
+                    <span className="leading-[24px] font-semibold tracking-[-5%] text-sm md:text-base text-[#000000]">Volume-Based Discounts</span>
+                    <span className="leading-[24px] font-medium tracking-[-5%] text-xs md:text-sm text-[#000000]">The more you grow, the more you save. Our pricing model is designed to reward higher transaction volumes with significant savings, ensuring you get the most out of your payment processing experience.</span>
+                  </div>
                 </li>
                 <li className="flex items-start space-x-3">
                   <Image width={26} height={26} src="/icons/check-pay.svg" alt="price-check" />
 
-                <div className="flex flex-col">
-                  <span className="leading-[24px] font-semibold tracking-[-5%] text-sm md:text-base text-[#000000]">Custom Pricing Solutions</span>
-                  <span className="leading-[24px] font-medium tracking-[-5%] text-xs md:text-sm text-[#000000]">We believe in providing solutions that work for you. Our team is open to discussing custom pricing options based on your transaction needs. Let&apos;s work together to create a plan that aligns perfectly with your business.</span>
-                </div>
+                  <div className="flex flex-col">
+                    <span className="leading-[24px] font-semibold tracking-[-5%] text-sm md:text-base text-[#000000]">Custom Pricing Solutions</span>
+                    <span className="leading-[24px] font-medium tracking-[-5%] text-xs md:text-sm text-[#000000]">We believe in providing solutions that work for you. Our team is open to discussing custom pricing options based on your transaction needs. Let&apos;s work together to create a plan that aligns perfectly with your business.</span>
+                  </div>
                 </li>
 
               </ul>
@@ -149,7 +152,7 @@ const Pricing = () => {
             </div>
           </div>
         </div> */}
-       <FaqSection />
+        <FaqSection />
 
         <CarouselContent />
 
