@@ -52,7 +52,7 @@ const ContactInfo = () => {
                         <div className="flex flex-col gap-4">
                             <div>
                             <div className="text-base font-bold">Lagos Office</div>
-                            <div className="text-sm font-normal">14 Idowu Taylor StVictoria Island, Lagos 106104, Lagos</div>
+                            <div className="text-sm font-normal">14 Idowu Taylor St Victoria Island, Lagos 106104, Lagos</div>
                             </div>
                             <div>
                             <div className="text-base font-bold">Abuja Office</div>
