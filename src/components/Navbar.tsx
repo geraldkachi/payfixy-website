@@ -37,6 +37,9 @@ const Navbar = () => {
                             <Link href="/about" className={`${pathname == '/about' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
                                 <span>About</span>
                             </Link>
+                            <Link href="/contact-us" className={`${pathname == '/about' && '!text-[#101928] font-semibold '} flex items-center gap-1 rounded-full px-3 py-2 text-sm transition-colors bg-transparent`}>
+                                <span>Contact Us</span>
+                            </Link>
                         </div>
 
                         <div className="hidden md:flex items-center relative gap-x-2">
@@ -84,6 +87,9 @@ const Navbar = () => {
                         </div> */}
                         <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
                             <Link href="/about" className="w-full h-full whitespace-nowrap">About</Link>
+                        </div>
+                        <div className='py-4 px-5 text-[#] h-max cursor-pointer'>
+                            <Link href="/contact-us" className="w-full h-full whitespace-nowrap">Contact Us</Link>
                         </div>
 
                         <div className='w-full grid grid-cols-1 gap-6 p-4'>

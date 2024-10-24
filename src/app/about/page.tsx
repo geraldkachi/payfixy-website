@@ -8,7 +8,6 @@ import TitleText from '@/components/TitleText'
 import Button from '@/components/Button'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
-import ContactInfo from '@/components/ContactInfo'
 
 const page = () => {
   return (
@@ -148,7 +147,6 @@ const page = () => {
         </div>
       </section>
 
-    <ContactInfo />
 
     {/* red section */}
     <section className="bg-white py-20 md:py-40">

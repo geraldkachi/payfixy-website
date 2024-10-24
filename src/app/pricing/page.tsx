@@ -17,7 +17,7 @@ const Pricing = () => {
           <div className="text-[#23272E] text-xs font-bold leading-5 tracking-[0.5px] rounded-3xl px-4 py-2 mb-3 md:mb-5 w-max">PRICING</div>
 
           <p className={`text-center mt-2 text-[#23272E] text-[40px] md:text-[56px] font-extrabold leading-[53px] md:leading-[72px] md:tracking-[-2px]`}>
-            Transparent pricing that <br className='hidden md:block' /> grows with you
+          Competitive pricing that <br className='hidden md:block' /> grows with you
           </p>
         </div>
       </div>

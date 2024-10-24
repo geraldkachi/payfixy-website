@@ -45,7 +45,9 @@ const ContactInfo = () => {
                     {/* @ts-ignore */}
                     <motion.div variants={slideIn("left", "tween", 0.2, 1)} className='pt-8 lg:py-16 px-4'>
                         <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">Contact Us</h2>
-                        <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 text-base">Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know. <br className='hidden md:block'  /> Vollie is here to help.</p>
+                        <p className="mb-4 lg:mb- font-light text-center text-gray-500 text-base">PayFixy is a revolutionary digital payment platform that enables both businesses and consumers to transact seamlessly.</p>
+                        <p className="mb-2 lg:mb-16 font-light text-center text-gray-500 text-base">We are committed to providing our customers with the best possible experience.</p>
+                        <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 text-base">Our trained sales team is available to meet your requests satisfactorily.</p>
 
                         <div className="flex flex-col gap-4">
                             <div>
