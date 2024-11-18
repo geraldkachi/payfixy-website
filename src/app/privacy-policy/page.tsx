@@ -1,10 +1,12 @@
 import Footer from '@/components/Footer'
+import Navbar from '@/components/Navbar'
 import React from 'react'
 
 const page = () => {
     return (
-        <div className="bg-g py-10 px-5">
-            <div className="max-w-5xl mx-auto">
+        <div className="bg-g">
+            <Navbar/>
+            <div className="max-w-5xl lg:mx-auto mx-3">
                 <header className="mb-8 flex flex-col items-center mt-20 text-center max-w-2xl mx-auto">
                     <h1 className="text-3xl md:text-[40px] leading-9 font-bold text-[#A51D21] mb-4">
                         Privacy Policy
