@@ -54,7 +54,7 @@ const Footer = () => {
                                 <h2 className="mb-3 md:mb-6 text-xs md:text-sm font-extrabold text-[#2A2A29] uppercase leading-[25.2px] tracking-[-2%]">Legals</h2>
                                 <ul className="text-[#2A2A29] font-normal text-sm md:text-base leading-[17.64px] md:leading-[22.4px] space-y-4 md:space-y-3">
                                     <li className="mb-2">
-                                        <Link href="#" className="hover:underline">IMS Policy</Link>
+                                        <Link href="/ims-policy" className="hover:underline">IMS Policy</Link>
                                     </li>
                                     <li className="mb-2">
                                         <Link href="/contact-us" className="hover:underline">Privacy Policy</Link>
