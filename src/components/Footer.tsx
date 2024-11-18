@@ -57,7 +57,7 @@ const Footer = () => {
                                         <Link href="/ims-policy" className="hover:underline">IMS Policy</Link>
                                     </li>
                                     <li className="mb-2">
-                                        <Link href="/contact-us" className="hover:underline">Privacy Policy</Link>
+                                        <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
                                     </li>
                                     <li className="mb-2">
                                         <Link href="#" className="hover:underline">Terms of Use</Link>

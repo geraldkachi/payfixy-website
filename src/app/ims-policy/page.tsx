@@ -1,12 +1,13 @@
+import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import React from 'react'
 
 const page = () => {
   return (
-    <div className="bg-gray-0 min-h-screen p-6">
+    <div className="bg-gray-0 min-h- p-6">
         <Navbar />
 
-    <div className="max-w-7xl mx-auto bg-whit">
+    <div className="max-w-5xl mx-auto bg-whit">
     <div className="flex flex-col items-center mt-20 text-center max-w-2xl mx-auto">
       <h1 className="text-3xl md:text-[40px] leading-9 font-bold text-[#A51D21] mb-4">
         Integrated Management System (IMS) Policy
@@ -324,6 +325,7 @@ const page = () => {
                 </div>
             </section>
     </div>
+    <Footer />
   </div>
   )
 }
