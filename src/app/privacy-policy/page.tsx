@@ -220,7 +220,7 @@ const page = () => {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800">11. How We Store Your Personal Information</h2>
           <p className="text-gray-700 mt-4">
-            Your information is securely stored and processed on our secure servers as well as secure physical locations and cloud infrastructure. The data that we collect from you may be transferred to or stored in cloud locations at globally accepted vendors' data centers. We maintain administrative, technical, and physical security measures to protect your personal information against unauthorized access, risk of loss, disclosure, misuse, or modification.
+            Your information is securely stored and processed on our secure servers as well as secure physical locations and cloud infrastructure. The data that we collect from you may be transferred to or stored in cloud locations at globally accepted vendors data centers. We maintain administrative, technical, and physical security measures to protect your personal information against unauthorized access, risk of loss, disclosure, misuse, or modification.
           </p>
           <p className="text-gray-700 mt-4">
             We have implemented safeguards such as firewalls, data encryption, and physical access controls to our data centers. We retain your personal data for as long as necessary to provide our services and comply with legal obligations.
