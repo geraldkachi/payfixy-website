@@ -1,80 +1,4 @@
 "use client"
-// import React from "react";
-// import { useFormik } from "formik";
-// import * as Yup from "yup";
-
-// const ForgotPassword = () => {
-//   const formik = useFormik({
-//     initialValues: {
-//       otp: "",
-//     },
-//     validationSchema: Yup.object({
-//       otp: Yup.string()
-//         .required("OTP is required")
-//         .matches(/^\d{6}$/, "OTP must be a 6-digit number"),
-//     }),
-//     onSubmit: async (values) => {
-//       console.log("Submitted OTP:", values.otp);
-//       // Replace this with OTP verification logic
-//       try {
-//         // Example API call
-//         const response = await fetch("/api/verify-otp", {
-//           method: "POST",
-//           headers: { "Content-Type": "application/json" },
-//           body: JSON.stringify({ otp: values.otp }),
-//         });
-
-//         if (response.ok) {
-//           alert("OTP verified successfully!");
-//         } else {
-//           alert("Invalid OTP. Please try again.");
-//         }
-//       } catch (error) {
-//         console.error("Error verifying OTP:", error);
-//         alert("An error occurred. Please try again.");
-//       }
-//     },
-//   });
-
-//   return (
-//     <div className="flex items-center justify-center h-screen">
-//       <div className="w-full max-w-sm p-4 bg-white shadow-md rounded-md">
-//         <h2 className="text-xl font-semibold text-center mb-4">Verify OTP</h2>
-//         <form onSubmit={formik.handleSubmit}>
-//           <div className="mb-4">
-//             <label htmlFor="otp" className="block text-sm font-medium text-gray-700">
-//               Enter 6-digit OTP
-//             </label>
-//             <input
-//               id="otp"
-//               name="otp"
-//               type="text"
-//               value={formik.values.otp}
-//               onChange={formik.handleChange}
-//               onBlur={formik.handleBlur}
-//               className={`mt-1 block w-full px-3 py-2 border ${
-//                 formik.touched.otp && formik.errors.otp ? "border-red-500" : "border-gray-300"
-//               } rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
-//             />
-//             {formik.touched.otp && formik.errors.otp ? (
-//               <div className="text-red-500 text-sm mt-1">{formik.errors.otp}</div>
-//             ) : null}
-//           </div>
-//           <button
-//             type="submit"
-//             className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
-//           >
-//             Verify OTP
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ForgotPassword;
-
-
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -144,8 +68,10 @@ const ForgotPassword = () => {
             </div>
             <h1 className="text-2xl leading-[32px] font-bold text-center text-gray-800 mb-2">OTP Verification</h1>
             <h1 className="text-xs leading-[16px] font-bold text-center text-gray-800 mb-6">Enter the 6-digit verification code sent to your email</h1>
+           {/* @ts-ignore */}
             {formik.errors.api && (
               <div className="text-red-500 bg-red-100 p-3 rounded-md text-center">
+             {/* @ts-ignore */}
                 {formik.errors.api}
               </div>
             )}
