@@ -95,3 +95,26 @@ body {
   animation: rotationBack2 1s linear infinite;
   transform-origin: center center;
 }
+
+/* checkbox  */
+
+
+.checkbox-container {
+  @apply relative inline-flex items-center gap-[11px] cursor-pointer;
+}
+
+.checkbox-input {
+  @apply hidden;
+}
+
+/* square */
+.checkbox-checkmark {
+  @apply bg-[#ffffff] border border-[#D8DAE5] rounded-[5px] w-[25px] h-[25px] flex items-center justify-center cursor-pointer;
+}
+
+.checkbox-input:checked + .checkbox-checkmark {
+  @apply bg-[#A51D21] border-[#A51D21] border-none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10' viewBox='0 0 12 10'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-width='2' d='M1 5l3 3 7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
