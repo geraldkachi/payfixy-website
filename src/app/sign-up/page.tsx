@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -12,6 +13,7 @@ import Checkbox from "@/components/Checkbox";
 import InputField from "@/components/Input";
 import Button from "@/components/Button";
 import Select, { StylesConfig } from "react-select";
+// import Image from "next/image";
 
 interface Option {
     value: string;
@@ -149,7 +151,9 @@ const page = () => {
                 <div className="flex items-center justify-center min-h-screen w-full max-w-[23rem] mx-auto">
                     <div className=" w-full max-w-[23rem] mx-auto">
                         <div className='text-center relative flex flex-col justify-center items-center absolute top-[13%] md:top-[12%]'>
-                            <img src="/auth-payfix.svg" className="mb-20" alt="payfixy" />
+                            <img
+                             loading="lazy"
+                            src="/auth-payfix.svg" className="mb-20" alt="payfixy" />
                         </div>
                         <h1 className="text-2xl leading-[32px] font-bold text-center text-gray-800 mb-2">Create account</h1>
                         <h1 className="text-xs leading-[16px] font-bold text-center text-gray-800 mb-6">Select account type</h1>
@@ -366,7 +370,9 @@ const page = () => {
                 </div>
             </div>
             <div className='hidden md:flex items-center flex-1 h-screen overflow-hidden'>
-                <img src="/login.svg" alt="" className="h-" />
+                <img
+               
+                src="/login.svg" alt="" className="h-" />
             </div>
         </div>
     )

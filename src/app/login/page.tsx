@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
 import { useFormik } from "formik";
@@ -6,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import InputField from "@/components/Input";
 import Button from "@/components/Button";
+// import Image from "next/image";
 
 
 
@@ -25,7 +27,6 @@ const Login = () => {
         .required("Password is required"),
     }),
     onSubmit: async (values, { setSubmitting, setErrors }) => {
-      // router.push("/dashboard");
       try {
         // const response = await login({ ...values })
         // console.log(" response", response);

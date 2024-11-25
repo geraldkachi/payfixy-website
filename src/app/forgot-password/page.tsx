@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @next/next/no-img-element */
+
 "use client"
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Button from "@/components/Button";
+// import Image from "next/image";
 
 const ForgotPassword = () => {
   const formik = useFormik({
