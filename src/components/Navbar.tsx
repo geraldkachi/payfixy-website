@@ -44,7 +44,7 @@ const Navbar = () => {
 
                         <div className="hidden md:flex items-center relative gap-x-2">
                             <Button className="!text-[#696F8C] !bg-white !rounded-lg whitespace-nowrap p-2" onClick={() => router.push('/login')}>Login</Button>
-                            <Button className="!text-white !bg-[#A51D21] !rounded-lg whitespace-nowrap p-2" onClick={() => router.push('/signup')}>Sign Up</Button>
+                            <Button className="!text-white !bg-[#A51D21] !rounded-lg whitespace-nowrap p-2" onClick={() => router.push('/sign-up')}>Sign Up</Button>
                         </div>
                     </div>
 
