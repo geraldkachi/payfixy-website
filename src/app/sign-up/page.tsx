@@ -39,7 +39,7 @@ const formattedCountryCodes = countryCodes.map((item) => ({
 const customStyles: StylesConfig<Option> = {
     control: (base, state) => ({
         ...base,
-        borderColor: state.isFocused ? "#A51D21" : "#A51D21",
+        borderColor: state.isFocused ? "#A51D21" : "",
         boxShadow: state.isFocused ? "0 0 0 1px #A51D21" : "none",
         "&:hover": {
             borderColor: "#A51D21",

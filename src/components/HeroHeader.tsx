@@ -27,7 +27,7 @@ const HeroHeader = () => {
                     <motion.div variants={navVariants}
                         initial="hidden"
                         whileInView="show" className="w-full mt-4 md:block">
-                        <Button className="!text-white !bg-[#A51D21] !px-10 md:!px-14 !py-[16px] !rounded-lg">Login</Button>
+                        <Button className="!text-white !bg-[#A51D21] !px-10 md:!px-14 !py-[16px] !rounded-lg w-max">Login</Button>
                     </motion.div>
                 </div>
 
