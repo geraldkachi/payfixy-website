@@ -46,7 +46,7 @@ const customStyles: StylesConfig<Option> = {
         },
         transition: "none",
         borderRadius: 4,
-        padding: '0 20px',
+        padding: '0px',
         margin: 0,
         backgroundColor: '#ffffff',
         fontSize: 14,

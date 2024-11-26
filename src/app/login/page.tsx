@@ -144,7 +144,7 @@ const Login = () => {
               <Link href="/forgot-password" className="my-4 text-xs text-[#A51D21] leading-3 font-medium">Forgot password?</Link>
              
                 <Button type="submit" isLoading={formik.isSubmitting}>
-                {formik.isSubmitting ? "Logging in..." : "Login"}
+                     {formik.isSubmitting ? "Logging in..." : "Login"}
                 </Button>
 
               <div className="flex items-center justify-center text-xs text-[#2A2A29] leading-[16px] font-medium mt-4">New to Payfixy?<Link href="/sign-up" className="text-[#A51D21]"> Sign up</Link> </div>
