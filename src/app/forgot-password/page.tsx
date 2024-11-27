@@ -6,14 +6,30 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Button from "@/components/Button";
-// import Image from "next/image";
+import { useMutation } from "react-query";
+import { otp } from "@/server/admin";
+
 
 const ForgotPassword = () => {
+
+  const mutation = useMutation(otp, {
+    onSuccess: () => {
+      // toast.success("OTP verified successfully!");
+    },
+    onError: (error: any) => {
+      // toast.error(error.response?.data?.message || "Failed to verify OTP.");
+    },
+  });
+
   const formik = useFormik({
     initialValues: {
-      otp: ["", "", "", "", "", ""], // Array of 6 digits
+      email: "fitzgeraldkachi@gmail.com",
+      otp: ["", "", "", "", "", ""], 
     },
     validationSchema: Yup.object({
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("Email is required"),
       otp: Yup.array()
         .of(
           Yup.string()
@@ -24,9 +40,12 @@ const ForgotPassword = () => {
         .max(6, "Only 6 fields allowed"),
     }),
     onSubmit: (values) => {
-      const otp = values.otp.join("");
-      console.log("Submitted OTP:", otp);
-      alert(`OTP Submitted: ${otp}`);
+      const otp = values.otp.join(""); 
+      const payload = {
+        email: values.email,
+        otp,
+      };
+      mutation.mutate(payload);
     },
   });
 

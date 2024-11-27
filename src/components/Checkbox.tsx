@@ -7,15 +7,15 @@ interface Props {
   }
 const Checkbox = ({ checked, onChange, label, className }: Props) => {
   return (
-    <label className={`${className} checkbox-container flex whitespace-nowrap items-center gap-[11px] cursor-pointer`}>
+    <label className={`${className} checkbox-container flex whitespace-nowrap items-center gap-[1px] cursor-pointer`}>
       <input
         type="checkbox"
         className="checkbox-input"
         checked={checked}
         onChange={onChange}
       />
-      <span className="checkbox-checkmark"></span>
-      {label && <span className="text-dark-501 text-[15px] leading-[16.32px] font-normal">{label}</span>}
+      <span className="checkbox-checkmark mr-4"></span>
+      {label && <span className="text-[]#474D66 text-[10px] leading-3 tracking-[-0.5px] font-normal break-words whitespace-pre-wrap">{label}</span>}
     </label>
   );
 };

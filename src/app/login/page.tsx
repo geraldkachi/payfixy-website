@@ -7,12 +7,33 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import InputField from "@/components/Input";
 import Button from "@/components/Button";
+import { login } from "@/server/admin";
+import { useMutation } from "react-query";
 // import Image from "next/image";
 
 
 
 const Login = () => {
   const router = useRouter();
+
+
+  
+  // Define mutation using React Query
+  const mutation = useMutation(login, {
+    retry: false,
+    onSuccess: (data) => {
+      // Handle successful login
+      console.log("successful:", data);
+      localStorage.setItem("authToken", data.access_token); // Save token
+      router.push("/forgot-password"); // Navigate to dashboard
+    },
+    onError: (error: any) => {
+      // Handle errors (e.g., invalid credentials)
+      console.log( error, ' error')
+      console.log( error, ' error')
+      formik.setErrors({ api: error.response?.data?.message });
+    },
+  });
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -26,39 +47,15 @@ const Login = () => {
         .min(8, "Password must be at least 8 characters")
         .required("Password is required"),
     }),
-    onSubmit: async (values, { setSubmitting, setErrors }) => {
+    onSubmit: async (values, {  setSubmitting, setErrors }) => {
+      // router.push("/forgot-password");
       try {
-        // const response = await login({ ...values })
-        // console.log(" response", response);
-
-        const response = await fetch(
-          "https://payfixy-website-5.onrender.com/main/login/",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(values),
-          }
-        );
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          // @ts-ignore
-          setErrors({ api: errorData.message || "Login failed" });
-          return;
-        }
-
-        const data = await response.json();
-
-        // Save the token to localStorage
-        const token = data.access_token; // Ensure the correct key is used based on API response
-        localStorage.setItem("authToken", token);
-
-        console.log("Login successful", data);
-
-        // Navigate to the dashboard or other secure page
-        router.push("/dashboard");
+        // const responseLo = await login({ ...values })
+        console.log(" values", values);
+        mutation.mutate(values, {onSuccess: () => {
+          router.push("/forgot-password");
+        }})
+        setSubmitting(false); // Stop form submission loading
 
       } catch (error) {
         // @ts-ignore

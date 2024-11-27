@@ -5,7 +5,7 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 // import SelectReact from "@/components/Select";
 import { countryCodes } from "@/data/countryCode";
@@ -13,6 +13,7 @@ import Checkbox from "@/components/Checkbox";
 import InputField from "@/components/Input";
 import Button from "@/components/Button";
 import Select, { StylesConfig } from "react-select";
+import SelectInput from "@/components/Select";
 // import Image from "next/image";
 
 interface Option {
@@ -35,38 +36,14 @@ const formattedCountryCodes = countryCodes.map((item) => ({
     label: `${item.flag} ${item.country} (${item.codeAbbr})`
 }));
 
-
-const customStyles: StylesConfig<Option> = {
-    control: (base, state) => ({
-        ...base,
-        borderColor: state.isFocused ? "#A51D21" : "",
-        boxShadow: state.isFocused ? "0 0 0 1px #A51D21" : "none",
-        "&:hover": {
-            borderColor: "#A51D21",
-        },
-        transition: "none",
-        borderRadius: 4,
-        padding: '0px',
-        margin: 0,
-        backgroundColor: '#ffffff',
-        fontSize: 14,
-        outline: 'none',
-    }),
-    menu: (base) => ({
-        ...base,
-        zIndex: 100,
-    }),
-};
-
 const page = () => {
     const router = useRouter();
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [activeTab, setActiveTab] = useState<string>("one");
+    const refS = useRef<HTMLInputElement>(null);
+    const ref = useRef<HTMLInputElement>(null);
+    const [selectedOption, setSelectedOption] = useState('');
 
-    // const tabOptionsBiz = tabs.map(tab => ({
-    //     value: tab.name,
-    //     label: tab.title,
-    // }));
 
     const formik = useFormik({
         initialValues: {
@@ -107,14 +84,14 @@ const page = () => {
 
         onSubmit: async (values, { setSubmitting, setErrors }) => {
             console.log(values, "values submit");
-        
+
             if (!termsAccepted) {
                 // @ts-ignore
                 setErrors({ api: "You must accept the Terms and Conditions." });
                 setSubmitting(false);
                 return;
             }
-        
+
             try {
                 const response = await fetch('https://payfixy-website-5.onrender.com/main/onboarding/', {
                     method: 'POST',
@@ -123,7 +100,7 @@ const page = () => {
                     },
                     body: JSON.stringify(values),
                 });
-        
+
                 if (response.ok) {
                     const data = await response.json();
                     console.log('Signup successful', data);
@@ -152,22 +129,22 @@ const page = () => {
                     <div className=" w-full max-w-[23rem] mx-auto">
                         <div className='text-center relative flex flex-col justify-center items-center absolute top-[13%] md:top-[12%]'>
                             <img
-                             loading="lazy"
-                            src="/auth-payfix.svg" className="mb-20" alt="payfixy" />
+                                loading="lazy"
+                                src="/auth-payfix.svg" className="mb-20" alt="payfixy" />
                         </div>
                         <h1 className="text-2xl leading-[32px] font-bold text-center text-gray-800 mb-2">Create account</h1>
                         <h1 className="text-xs leading-[16px] font-bold text-center text-gray-800 mb-6">Select account type</h1>
                         {/* @ts-ignore */}
                         {formik.errors.api && (
                             <div className="text-red-500 bg-red-100 p-3 rounded-md text-center">
-                              {/* @ts-ignore */}
+                                {/* @ts-ignore */}
                                 Error: {formik.errors.api}
                             </div>
                         )}
                         <form onSubmit={formik.handleSubmit} className="space-y-4 p-3 w-full max-w-[23rem] mx-auto overflow-y-scroll">
 
                             <div className="flex items-start h-full gap-0 px-0 md:mb-9 w-full whitespace-nowrap">
-                                {tabs.map((tab:{ name: string}, idx: number) => {
+                                {tabs.map((tab: { name: string }, idx: number) => {
                                     return (
                                         <button
                                             key={idx}
@@ -175,7 +152,7 @@ const page = () => {
                                                 ? "!border-[#A73636] !text-[#A73636] leading-6"
                                                 : "text-gray-103 !border-b !border-gray-200"
                                                 }`}
-                                                
+
                                             onClick={() => setActiveTab(tab.name)}
                                         >
                                             <span className="inset-0 z-0 bg-gradient-to- ">
@@ -188,42 +165,76 @@ const page = () => {
 
                             {activeTab == "one" &&
                                 <>
-                                    <div className="w-full">
-                                        <label className=' mb-2'>Country</label>
-                                        <Select
-                                            id='country'
-                                            options={formattedCountryCodes}
-                                            name="country"
-                                            value={formattedCountryCodes.find(option => option.value === formik.values.country) || null}
-                                            // @ts-ignore
-                                            onChange={(selectedOption) => formik.setFieldValue('country', selectedOption?.value || '')}
+
+                                    <div className="mb-4">
+                                        <label htmlFor="business_type" className="block text-sm font-medium text-gray-700">Business Type</label>
+                                        <SelectInput
+                                            name="business_type"
+                                            value={formik.values.business_type}
+                                            setValue={(value) => formik.setFieldValue("business_type", value)}
+                                            options={optionBizTypes}
+                                            placeholder="Select a business type"
                                             onBlur={formik.handleBlur}
-                                            styles={customStyles}
-                                            placeholder="Country"
-                                        // className="w-64"
+                                            error={
+                                                formik.touched.business_type && formik.errors.business_type
+                                            }
                                         />
-                                        {formik.touched.country && formik.errors.country ? (
-                                            <div className="text-red-600 text-sm">{formik.errors.country}</div>
-                                        ) : null}
+                                        {/* {formik.touched.business_type && formik.errors.business_type && (
+                                            <p className="text-red-500 text-xs mt-1">
+                                                {formik.errors.business_type}
+                                            </p>
+                                        )} */}
+                                    </div>
+                                    <div className="mb-4">
+                                        <label
+                                            htmlFor="country"
+                                            className="block text-sm font-medium text-gray-700"
+                                        >
+                                            Country
+                                        </label>
+                                        <SelectInput
+                                        label="Country"
+                                            name="country" // Formik field name for country
+                                            value={formik.values.country} // Current country value from Formik
+                                            setValue={(value) => formik.setFieldValue("country", value)} // Update value in Formik
+                                            options={formattedCountryCodes} // Use formatted country codes as options
+                                            placeholder="Select a country"
+                                            onBlur={formik.handleBlur} // Pass Formik's onBlur
+                                            error={formik.touched.country && formik.errors.country} // Validation error
+                                        />
+
                                     </div>
 
-                                    <div className="w-full">
-                                        <label className=' mb-2'>Business Type</label>
-                                        <Select
-                                            id="business_type"
-                                            options={optionBizTypes}
-                                            name="business_type"
-                                            value={optionBizTypes.find(option => option.value === formik.values.business_type) || null}
-                                            // @ts-ignore
-                                            onChange={(selectedOption) => formik.setFieldValue('business_type', selectedOption?.value || '')}
-                                            onBlur={formik.handleBlur}
-                                            styles={customStyles}
-                                            placeholder="Select a business type"
-                                        />
-                                        {formik.touched.business_type && formik.errors.business_type ? (
-                                            <div className="text-red-600 text-sm">{formik.errors.business_type}</div>
-                                        ) : null}
+
+                                    <div className="neue my-2">
+                                        {formik.values.business_type && <div onClick={() => refS.current?.click()} className={`${formik.values.business_type == 'for_profit' ? "!border !border-[#A51D21] bg-[#FDF4F4] " : ""} neue flex items-center cursor-pointer pl-4 border border-[#D9DDE3] hover:border-red-600 rounded-lg my-3`}>
+                                            <label htmlFor="bordered-radio-1" className="w-full py-2 mx-4 text-sm font-medium text-gray-900 cursor-pointer">
+                                                <div className="flex items-center justify-between text-[#003E51]">
+                                                    <div>
+                                                        <div className="w-full text-sm font-semibold">For Profit business (FPB)</div>
+                                                        <div className="w-full text-[10px] font-normal">For sole traders, startups, small to medium businesses and enterprises.</div>
+                                                    </div>
+
+
+                                                </div>
+                                            </label>
+                                            <input ref={refS} type="radio" value={"for_profit"} checked={formik.values.business_type == "for_profit"} onChange={() => formik.setFieldValue("business_type", "for_profit")} className="cursor-pointer w-4 h-4 border-[#D9DDE3] mr-5" />
+                                        </div>}
+
+                                        {formik.values.business_type && <div onClick={() => ref.current?.click()} className={`${formik.values.business_type == 'non_profit' ? "!border !border-[#A51D21] bg-[#FDF4F4]" : ""} neue flex items-center cursor-pointer pl-4 border border-[#D9DDE3] hover:border-red-600 rounded-lg my-3`}>
+                                            <label htmlFor="bordered-radio-2" className="w-full py-2 mx-4 text-sm font-medium text-gray-900 cursor-pointer">
+                                                <div className="flex items-center justify-between text-[#003E51]">
+                                                    <div>
+                                                        <div className="w-full text-sm font-semibold">Not-For-Profit business (NFPB)</div>
+                                                        <div className="w-full text-[10px] font-normal">For NGOs, i.e Non profit organizations, church, crowd funding, etc.</div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <input {...{ ref }} type="radio" required value={"non-profit"} checked={formik.values.business_type === "non_profit"} onChange={() => formik.setFieldValue("business_type", "non_profit")} className="cursor-pointer w-4 h-4 border-[#D9DDE3] mr-5" />
+                                        </div>}
                                     </div>
+
+
 
                                     <Button
                                         type="button"
@@ -371,8 +382,8 @@ const page = () => {
             </div>
             <div className='hidden md:flex items-center flex-1 h-screen overflow-hidden'>
                 <img
-               
-                src="/login.svg" alt="" className="h-" />
+
+                    src="/login.svg" alt="" className="h-" />
             </div>
         </div>
     )

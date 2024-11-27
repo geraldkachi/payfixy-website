@@ -7,4 +7,5 @@ interface IAdmin extends DefaultAttributes {
    country: string,
    business_type: string,
    business_name: string,
+   otp: string,
 }

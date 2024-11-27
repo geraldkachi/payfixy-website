@@ -46,7 +46,7 @@ const page = () => {
           </p>
         </section>
 
-        <section className="mt-6">
+        <section className="my-6">
           <h2 className="text-2xl font-semibold text-gray-800 mb-2">
             Contact Us
           </h2>
@@ -59,6 +59,7 @@ const page = () => {
             </a>
           </p>
         </section>
+        <div className="my-6"></div>
       </div>
       <Footer />
     </div>

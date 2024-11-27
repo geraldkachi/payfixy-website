@@ -15,7 +15,6 @@ export const instance = (
     timeout: 1500000,
     headers: {
       "Content-Type": "application/json",
-      // withCredentials: true,
       ...(token && {
         Authorization: `Bearer ${token}`,
       }),
@@ -23,12 +22,21 @@ export const instance = (
   });
 };
 
-export const getToken = () => cookies.load("access");
+// export const getToken = () => cookies.load("access");
+export const getToken = () =>
+typeof window !== "undefined"
+  ? window.localStorage.getItem("access")
+  : null;;
+
+
+  console.log('const', getToken)
 
 export const next = (e: AxiosError<{ message: string }>) => {
     console.log(e, "next")
     console.log(e?.message, "next message")
+    console.log(e?.response?.data?.error , "next message")
   throw new Error(
+    // e.response ? e?.message : e?.response?.data?.error 
     e.response?.data ? e.response.data.message : "Something went wrong"
   );
 };
