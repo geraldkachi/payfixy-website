@@ -67,7 +67,7 @@ const SelectInput: React.FC<SelectProps> = ({
   return (
     <div ref={selectRef} className={`relative ${className}`}>
       {label && <label className="block text-sm font-medium text-gray-700">{label}</label>}
-      <div className={`${error ? 'border-red-600' : ''} border mt-1 text-[0.875rem] flex flex-row items-center border-light-gray rounded-lg p-2`}>
+      <div className={`${error ? 'border-red-600' : ''} mt-1 text-[0.875rem] flex flex-row items-center border border-[#D9DAE5] rounded-lg p-2`}>
         <input
           type="text"
           name={name}

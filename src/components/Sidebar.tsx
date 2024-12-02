@@ -1,3 +1,5 @@
+'use client';
+import { appLogout } from "@/utils/shared";
 import React from "react";
 
 interface SidebarProps {
@@ -25,6 +27,7 @@ const Sidebar: React.FC<SidebarProps> = ({ links }) => {
       <div className="p-4 border-t border-gray-700">
         <a
           href="#logout"
+          onClick={appLogout}
           className="flex items-center gap-4 px-4 py-2 text-gray-300 hover:bg-red-600 hover:text-white rounded-lg"
         >
           {/* <LogoutIcon /> */}

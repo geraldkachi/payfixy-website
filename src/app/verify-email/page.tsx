@@ -8,22 +8,31 @@ import * as Yup from "yup";
 import Button from "@/components/Button";
 import { useMutation } from "react-query";
 import { otp } from "@/server/admin";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
+const emailSetter = localStorage.getItem("email");
+console.log(emailSetter, 'emailSetter')
+const domain = emailSetter?.split("@")[1];
 
-const ForgotPassword = () => {
+const VerifyEmail
+ = () => {
+  const router = useRouter();
 
   const mutation = useMutation(otp, {
-    onSuccess: () => {
-      // toast.success("OTP verified successfully!");
+    onSuccess: (data) => {
+      toast.success(data?.message ||  "OTP verified successfully!");
+      localStorage.removeItem("email")
+      router.push("/login"); 
     },
     onError: (error: any) => {
-      // toast.error(error.response?.data?.message || "Failed to verify OTP.");
+      toast.error(error?.message || "Failed to verify OTP.");
     },
   });
 
   const formik = useFormik({
     initialValues: {
-      email: "fitzgeraldkachi@gmail.com",
+      email: emailSetter,
       otp: ["", "", "", "", "", ""], 
     },
     validationSchema: Yup.object({
@@ -42,7 +51,7 @@ const ForgotPassword = () => {
     onSubmit: (values) => {
       const otp = values.otp.join(""); 
       const payload = {
-        email: values.email,
+        email: emailSetter,
         otp,
       };
       mutation.mutate(payload);
@@ -98,6 +107,9 @@ const ForgotPassword = () => {
                 {formik.errors.api}
               </div>
             )}
+            <div className="text-center">
+             {emailSetter ? `${emailSetter.substring(0, 3)}*****@${domain}` : null}
+            </div>
            
             <form onSubmit={formik.handleSubmit} className="flex flex-col items-center">
               <div className="flex gap-2 mb-4">
@@ -122,8 +134,8 @@ const ForgotPassword = () => {
                 <p className="text-red-500 text-sm mb-4">{formik.errors.otp}</p>
               )}
            
-              <Button type="submit" isLoading={formik.isSubmitting}>
-                {formik.isSubmitting ? "Submitting..." : "Submit"}
+              <Button type="submit" isLoading={mutation.isLoading} disabled={mutation.isLoading}>
+                {mutation.isLoading ? "Submitting..." : "Submit"}
               </Button>
             </form>
           </div>
@@ -137,5 +149,6 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default VerifyEmail
+;
 

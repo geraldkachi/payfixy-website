@@ -9,29 +9,31 @@ import InputField from "@/components/Input";
 import Button from "@/components/Button";
 import { login } from "@/server/admin";
 import { useMutation } from "react-query";
-// import Image from "next/image";
-
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
   const router = useRouter();
-
-
+  const [showPassword, setShowPassword] = useState(false);
   
   // Define mutation using React Query
   const mutation = useMutation(login, {
     retry: false,
     onSuccess: (data) => {
       // Handle successful login
+      toast.success(data?.message ||  "OTP verified successfully!");
       console.log("successful:", data);
       localStorage.setItem("authToken", data.access_token); // Save token
-      router.push("/forgot-password"); // Navigate to dashboard
     },
-    onError: (error: any) => {
-      // Handle errors (e.g., invalid credentials)
+    onError: (error) => {
       console.log( error, ' error')
-      console.log( error, ' error')
-      formik.setErrors({ api: error.response?.data?.message });
+       // @ts-ignore
+      console.log( error?.message, ' error test')
+      // @ts-ignore
+      toast.error(error?.message ||  "OTP verified successfully!");
+      // @ts-ignore
+      formik.setErrors({ api: error?.message });
     },
   });
   const formik = useFormik({
@@ -48,15 +50,14 @@ const Login = () => {
         .required("Password is required"),
     }),
     onSubmit: async (values, {  setSubmitting, setErrors }) => {
-      // router.push("/forgot-password");
       try {
-        // const responseLo = await login({ ...values })
-        console.log(" values", values);
-        mutation.mutate(values, {onSuccess: () => {
-          router.push("/forgot-password");
+        mutation.mutate(values, {onSuccess: (data) => {
+          console.log(data, 'onSuccess data')
+          if (data?.status_code  == 200 || 201) {
+            router.push("/dashboard");
+          }
         }})
-        setSubmitting(false); // Stop form submission loading
-
+        setSubmitting(false); 
       } catch (error) {
         // @ts-ignore
         setErrors({ api: `${error}. Please try again later.` });
@@ -80,13 +81,14 @@ const Login = () => {
             {/* @ts-ignore */}
             {formik.errors.api && (
               <div className="text-red-500 bg-red-100 p-3 rounded-md text-center">
-              {/* @ts-ignore */}
+                 {/* @ts-ignore */}
                 {formik.errors.api}
               </div>
             )}
-            {/* {formik.errors.password && (
+
+            {/* {errorMsg && (
               <div className="text-red-500 bg-red-100 p-3 rounded-md text-center">
-                {formik.errors.password}
+             {String(errorMsg)}
               </div>
             )} */}
             
@@ -108,19 +110,17 @@ const Login = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
+                error={formik.touched.email && formik.errors.email}
               />
-               {formik.touched.email && formik.errors.email && (
-                <div className="text-red-500 text-sm mt-1">
-                  {formik.errors.email}
-                </div>
-              )}
+            
 
               <InputField
                 id="password"
                 name="password"
                 label="Password"
+                type={showPassword ? "text" : 'password'}
                 placeholder="Enter your password"
-                type="password"
+                // type="password"
                 required
                 className={`${
                   formik.touched.password && formik.errors.password
@@ -130,18 +130,17 @@ const Login = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
+                suffix={<img src="/password-eye.svg"  alt="eye"
+                   onClick={() => setShowPassword(!showPassword)} 
+                  className="text-gray-500 cursor-pointer p-2 w-full" />}
+                  error={formik.touched.password && formik.errors.password }
               />
-              {formik.touched.password && formik.errors.password && (
-                <div className="text-red-500 text-sm mt-1">
-                  {formik.errors.password}
-                </div>
-              )}
 
 
               <Link href="/forgot-password" className="my-4 text-xs text-[#A51D21] leading-3 font-medium">Forgot password?</Link>
              
-                <Button type="submit" isLoading={formik.isSubmitting}>
-                     {formik.isSubmitting ? "Logging in..." : "Login"}
+                <Button type="submit"  isLoading={mutation.isLoading} disabled={mutation.isLoading}>
+                     {mutation.isLoading ? "Logging in..." : "Login"}
                 </Button>
 
               <div className="flex items-center justify-center text-xs text-[#2A2A29] leading-[16px] font-medium mt-4">New to Payfixy?<Link href="/sign-up" className="text-[#A51D21]"> Sign up</Link> </div>

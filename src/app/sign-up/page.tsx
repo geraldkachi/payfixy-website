@@ -12,9 +12,11 @@ import { countryCodes } from "@/data/countryCode";
 import Checkbox from "@/components/Checkbox";
 import InputField from "@/components/Input";
 import Button from "@/components/Button";
-import Select, { StylesConfig } from "react-select";
 import SelectInput from "@/components/Select";
+import { useMutation } from "react-query";
+import { signUp } from "@/server/admin";
 // import Image from "next/image";
+import { toast } from "react-toastify";
 
 interface Option {
     value: string;
@@ -28,7 +30,7 @@ const tabs = [
 
 const optionBizTypes: Option[] = [
     { value: "for_profit", label: "For Profit" },
-    { value: "non_profit", label: "None Profit" },
+    { value: "not_for_profit", label: "None Profit" },
 ];
 
 const formattedCountryCodes = countryCodes.map((item) => ({
@@ -42,8 +44,30 @@ const page = () => {
     const [activeTab, setActiveTab] = useState<string>("one");
     const refS = useRef<HTMLInputElement>(null);
     const ref = useRef<HTMLInputElement>(null);
-    const [selectedOption, setSelectedOption] = useState('');
 
+    // / Define mutation using React Query
+    const mutation = useMutation(signUp, {
+      retry: false,
+      onSuccess: (data) => {
+        // Handle successful login
+        toast.success(data?.message ||  "Created successfully!");
+        console.log("successful:", data);
+        if (data) {
+          
+        }
+        // router.push("/verify-email"); 
+      },
+      onError: (error) => {
+        // Handle errors (e.g., invalid credentials)
+        console.log( error, ' error')
+        console.log( error, ' error test')
+        // @ts-ignore
+        toast.success(error?.message ||  "Failed!");
+
+        // @ts-ignore
+        formik.setErrors({ api: error?.message });
+      },
+    });
 
     const formik = useFormik({
         initialValues: {
@@ -93,33 +117,22 @@ const page = () => {
             }
 
             try {
-                const response = await fetch('https://payfixy-website-5.onrender.com/main/onboarding/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(values),
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log('Signup successful', data);
-                    router.push("/login"); // Redirect on success
-                } else {
-                    const errorData = await response.json();
-                    // @ts-ignore
-                    setErrors({ api: errorData.message || 'Sign up failed' });
-                }
+                mutation.mutate(values, {onSuccess: (data) => {
+                    console.log(data, 'onSuccess data')
+                    if (data?.status_code) {
+                        router.push("/verify-email"); 
+                    }
+                    localStorage.setItem("email", values.email);
+                  }})
+                  setSubmitting(false); 
             } catch (error) {
                 // @ts-ignore
-                setErrors({ api: `An error occurred. Please try again later. ${error}` });
+                setErrors({ api: `An error occurred. Please try again later. ${error?.message}` });
             } finally {
                 setSubmitting(false); // Ensure that the submitting state is always set back to false
             }
         },
     });
-
-    console.log(formik.values, 'values')
 
     return (
         <div className='flex items-start flex-1 h-screen'>
@@ -134,6 +147,7 @@ const page = () => {
                         </div>
                         <h1 className="text-2xl leading-[32px] font-bold text-center text-gray-800 mb-2">Create account</h1>
                         <h1 className="text-xs leading-[16px] font-bold text-center text-gray-800 mb-6">Select account type</h1>
+                       
                         {/* @ts-ignore */}
                         {formik.errors.api && (
                             <div className="text-red-500 bg-red-100 p-3 rounded-md text-center">
@@ -175,23 +189,11 @@ const page = () => {
                                             options={optionBizTypes}
                                             placeholder="Select a business type"
                                             onBlur={formik.handleBlur}
-                                            error={
-                                                formik.touched.business_type && formik.errors.business_type
-                                            }
+                                            error={formik.touched.business_type && formik.errors.business_type}
                                         />
-                                        {/* {formik.touched.business_type && formik.errors.business_type && (
-                                            <p className="text-red-500 text-xs mt-1">
-                                                {formik.errors.business_type}
-                                            </p>
-                                        )} */}
+
                                     </div>
                                     <div className="mb-4">
-                                        <label
-                                            htmlFor="country"
-                                            className="block text-sm font-medium text-gray-700"
-                                        >
-                                            Country
-                                        </label>
                                         <SelectInput
                                         label="Country"
                                             name="country" // Formik field name for country
@@ -264,12 +266,8 @@ const page = () => {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         value={formik.values.business_name}
+                                        error={formik.touched.business_name && formik.errors.business_name}
                                     />
-                                    {formik.touched.business_name && formik.errors.business_name && (
-                                        <div className="text-red-500 text-sm mt-1">
-                                            {formik.errors.business_name}
-                                        </div>
-                                    )}
 
                                     <InputField
                                         id="first_name"
@@ -285,12 +283,8 @@ const page = () => {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         value={formik.values.first_name}
+                                        error={formik.touched.first_name && formik.errors.first_name}
                                     />
-                                    {formik.touched.first_name && formik.errors.first_name && (
-                                        <div className="text-red-500 text-sm mt-1">
-                                            {formik.errors.first_name}
-                                        </div>
-                                    )}
 
                                     <InputField
                                         id="last_name"
@@ -306,12 +300,8 @@ const page = () => {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         value={formik.values.last_name}
+                                        error={formik.touched.last_name && formik.errors.last_name}
                                     />
-                                    {formik.touched.last_name && formik.errors.last_name && (
-                                        <div className="text-red-500 text-sm mt-1">
-                                            {formik.errors.last_name}
-                                        </div>
-                                    )}
 
                                     <InputField
                                         id="email"
@@ -327,12 +317,8 @@ const page = () => {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         value={formik.values.email}
+                                        error={formik.touched.email && formik.errors.email}
                                     />
-                                    {formik.touched.email && formik.errors.email && (
-                                        <div className="text-red-500 text-sm mt-1">
-                                            {formik.errors.email}
-                                        </div>
-                                    )}
 
                                     <InputField
                                         id="password"
@@ -348,12 +334,8 @@ const page = () => {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         value={formik.values.password}
+                                        error={formik.touched.password && formik.errors.password}
                                     />
-                                    {formik.touched.password && formik.errors.password && (
-                                        <div className="text-red-500 text-sm mt-1">
-                                            {formik.errors.password}
-                                        </div>
-                                    )}
 
                                     <div className="flex items-center gap-3">
                                         <Checkbox
@@ -365,9 +347,9 @@ const page = () => {
 
 
                                     <Button type="submit"
-                                        disabled={formik.isSubmitting}
-                                        isLoading={formik.isSubmitting}>
-                                        {formik.isSubmitting ? "Creating Account..." : "Create an Account"}
+                                        disabled={mutation.isLoading}
+                                        isLoading={mutation.isLoading}>
+                                        {mutation.isLoading ? "Creating Account..." : "Create an Account"}
                                     </Button>
                                 </>}
 

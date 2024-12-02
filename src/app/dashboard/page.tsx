@@ -1,5 +1,7 @@
+"use client"
 import React from 'react'
 import Sidebar from '@/components/Sidebar'
+import { useRouter } from 'next/navigation';
 
 const links = [
     { name: "Home", icon: "<HomeIcon />", path: "/home" },
@@ -7,6 +9,7 @@ const links = [
     { name: "Settings", icon: "<CogIcon />", path: "/settings" },
   ];
 const page = () => {
+  const router = useRouter()
 
   return (
     <div className="flex">
@@ -15,6 +18,16 @@ const page = () => {
       <div className="max-w-7xl mx-auto">
             <h1 className="text-2xl font-bold">Welcome to the Dashboard!</h1>
             <p className="mt-4">This is where your main content will go.</p>
+
+            <div className="flex items-center justify-between">
+              <div></div>
+
+              <div onClick={() => {
+                router.push('/kyc')
+              }}>
+                KYC
+              </div>
+            </div>
       </div>
     </main>
   </div>
