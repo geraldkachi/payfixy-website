@@ -12,7 +12,7 @@ const Summary = () => {
   const { count, increment } = useAppStore();
   const noOfSteps = 5
   // const arrayOfSteps = [...Array(noOfSteps)];
-  const completedSteps = count + 1;
+  const completedSteps = count;
   const handleStepClick = (index: number) => {
     useAppStore.setState({ count: index })
   };
@@ -102,7 +102,7 @@ const Summary = () => {
             ))}
         </div>
         <p className="stepper-count text-[#94A0B4] text-xs">
-          Step <span className={`completed-count text-[#272848] dark:text-[#ffffff]`}>{completedSteps}</span> of {noOfSteps}
+          Step <span className={`completed-count text-[#272848]`}>{completedSteps}</span> of {noOfSteps}
         </p>
       </div>
 

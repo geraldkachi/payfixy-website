@@ -11,6 +11,7 @@ import { login } from "@/server/admin";
 import { useMutation } from "react-query";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { saveAdminDetails } from "@/utils/shared";
 
 
 const Login = () => {
@@ -24,6 +25,7 @@ const Login = () => {
       // Handle successful login
       toast.success(data?.message ||  "OTP verified successfully!");
       console.log("successful:", data);
+      saveAdminDetails(data?.user);
       localStorage.setItem("authToken", data.access_token); // Save token
     },
     onError: (error) => {

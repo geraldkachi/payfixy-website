@@ -17,23 +17,23 @@ interface Option {
     value: string;
     label: string;
 }
-// const optionTransactionVolumes: Option[] = [
-//     { value: "less_than_1000", label: "Less than $1,000" },
-//     { value: "1000_to_5000", label: "$1,000 - $5,000" },
-//     { value: "5000_to_10000", label: "$5,000 - $10,000" },
-//     { value: "more_than_10000", label: "More than $10,000" },
-// ];
-
 
 const BusinessDetails = () => {
     const { count, increment } = useAppStore();
     const noOfSteps = 5
     // const arrayOfSteps = [...Array(noOfSteps)];
-    const completedSteps = count + 1;
+    const completedSteps = count;
   
     const handleStepClick = (index: number) => {
       useAppStore.setState({ count: index })
+      increment()
     };
+
+const savedData = JSON.parse(localStorage.getItem("businessDetails") || "{}");
+// localStorage.removeItem("businessDetails");
+
+console.log(savedData, 'savedData business details')
+
 
     const mutation = useMutation(kycApi, {
         retry: false,
@@ -53,13 +53,20 @@ const BusinessDetails = () => {
 
     const formik = useFormik({
         initialValues: {
-            business_name: "",
-            industry: '',
-            phone_number: '',
-            business_address: '',
-            business_location: '',
-            expected_transaction_volume: "",
-            business_description: ""
+            // business_name: "",
+            // industry: '',
+            // phone_number: '',
+            // business_address: '',
+            // business_location: '',
+            // expected_transaction_volume: "",
+            // business_description: ""
+            business_name: savedData.business_name || "",
+            industry: savedData.industry || '',
+            phone_number: savedData.phone_number || '',
+            business_address: savedData.business_address || '',
+            business_location: savedData.business_location || '',
+            expected_transaction_volume: savedData.expected_transaction_volume || "",
+            business_description: savedData.business_description || ""
         },
         validationSchema: Yup.object({
             business_name: Yup.string()
@@ -82,8 +89,10 @@ const BusinessDetails = () => {
         }),
 
         onSubmit: async (values, { setSubmitting, setErrors }) => {
+            localStorage.setItem("businessDetails", JSON.stringify(values));
             try {
                 console.log(" values", values);
+                localStorage.setItem("businessDetails", JSON.stringify(values));
                 mutation.mutate(values, {onSuccess: (data) => {
                   console.log(data, 'onSuccess data')
                 }})
@@ -97,6 +106,9 @@ const BusinessDetails = () => {
               }
         },
     });
+    const getFieldError = (touched: boolean | undefined, error: any): string | undefined => {
+        return touched && typeof error === "string" ? error : undefined;
+    };
 
     return (
         <div>
@@ -121,7 +133,7 @@ const BusinessDetails = () => {
                             ))}
                 </div>
                 <p className="stepper-count text-[#94A0B4] text-xs">
-                  Step <span className={`completed-count text-[#272848] dark:text-[#ffffff]`}>{completedSteps}</span> of {noOfSteps}
+                  Step <span className={`completed-count text-[#272848]`}>{completedSteps}</span> of {noOfSteps}
                 </p>
               </div>
 
@@ -137,6 +149,8 @@ const BusinessDetails = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.business_name}
+                            // @ts-ignore
+                            // @ts-ignore
                             error={formik.touched.business_name && formik.errors.business_name}
                         />
                         <SelectInput
@@ -147,6 +161,7 @@ const BusinessDetails = () => {
                             value={formik.values.industry}
                             setValue={(value) => formik.setFieldValue("industry", value)}
                             onBlur={formik.handleBlur}
+                            // @ts-ignore
                             error={formik.touched.industry && formik.errors.industry}
                         />
                         <InputField
@@ -157,6 +172,7 @@ const BusinessDetails = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.phone_number}
+                            // @ts-ignore
                             error={formik.touched.phone_number && formik.errors.phone_number}
                         />
                         <InputField
@@ -167,6 +183,7 @@ const BusinessDetails = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.business_address}
+                            // @ts-ignore
                             error={formik.touched.business_address && formik.errors.business_address}
                         />
                         <SelectInput
@@ -177,6 +194,7 @@ const BusinessDetails = () => {
                             value={formik.values.business_location}
                             setValue={(value) => formik.setFieldValue("business_location", value)}
                             onBlur={formik.handleBlur}
+                            // @ts-ignore
                             error={formik.touched.business_location && formik.errors.business_location}
                         />
 
@@ -188,6 +206,7 @@ const BusinessDetails = () => {
                             value={formik.values.expected_transaction_volume}
                             setValue={(value) => formik.setFieldValue("expected_transaction_volume", value)}
                             onBlur={formik.handleBlur}
+                            // @ts-ignore
                             error={formik.touched.expected_transaction_volume && formik.errors.expected_transaction_volume}
                         />
 
@@ -201,9 +220,8 @@ const BusinessDetails = () => {
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.business_description}
-                                error={
-                                    formik.touched.business_description && formik.errors.business_description
-                                }
+                               // @ts-ignore
+                                error={formik.touched.business_description && formik.errors.business_description}
                                 multiline
                                 className="input text pl-2 pr-3 py-2"
                                 style={{ height: "120px" }}
@@ -217,7 +235,7 @@ const BusinessDetails = () => {
                             <Button type="submit" className='md:w-max px-10 md:px-14'
                                 disabled={mutation.isLoading}
                                 isLoading={mutation.isLoading}
-                                onClick={() => increment()}
+                                // onClick={() => increment()}
                                 >
                                 {mutation.isLoading ? "Save & Continue" : "Save & Continue"}
                             </Button>

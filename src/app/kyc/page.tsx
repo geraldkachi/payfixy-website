@@ -10,11 +10,15 @@ import StepperAlph from './StepperAlph';
 import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import { kycStart } from '@/server/kyc/kyc';
+import { appLogout, getAdminDetails } from '@/utils/shared';
 
 const Page: React.FC = () => {
+  const user = getAdminDetails()
+console.log(user?.uuid)
   const { count } = useAppStore();
   useEffect(() => {
-    mutation.mutate({merchant: 1})
+    mutation.mutate({merchant: user?.uuid as string})
+    // mutation.mutate({merchant: user?.uuid as string})
     return () => {
       useAppStore.setState({ count: 1 })
     }
@@ -27,18 +31,17 @@ const Page: React.FC = () => {
       console.log("successful:", data);
     },
     onError: (error: any) => {
-        toast.error(error?.message || "Something went wrong.");
-
+        toast.error(error?.message || "Something went wrong. or Expired timeout");
+        // appLogout()
       console.log( error, ' error')
       // @ts-ignore
       formik.setErrors({ api: error.response?.data?.message });
     },
   });
 
-
   return (
     <div className="flex overflow-y-scroll h-screen">
-      <div className="h-screen w-[439px] bg-[#2A2A29] text-white hidden md:flex flex-col">
+      <div className="h-screen w-[439px]  overflow-y-hidden bg-[#2A2A29] text-white hidden md:flex flex-col">
 
         <div className="flex flex-col flex-1 mt-4 space-y-2">
 
@@ -68,9 +71,9 @@ const Page: React.FC = () => {
           </div>
         </div>
         <div className="max-w-7xl mx-auto p-6 md:p-10 overflow-y-scroll">
-        {mutation.isLoading && <p>Loading...</p>}
+        {/* {mutation.isLoading && <p>Loading...</p>}
         {mutation.isError && <p>Error: {mutation.error?.message}</p>}
-        {mutation.isSuccess && <p>Process started successfully!</p>}
+        {mutation.isSuccess && <p>Process started successfully!</p>} */}
           {count == 1 && <BusinessDetails />}
           {count == 2 && <BusinessDocument />}
           {count == 3 && <BankAccount />}

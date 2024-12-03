@@ -44,12 +44,14 @@ export const optionTransactionVolumes: Option[] = [
 
 
 export const optionRoles = [
+    { value: "owner", label: "Owner" },
+    // { value: "director", label: "Director" },
     { value: "business_owner", label: "Business Owner" },
-    { value: "director", label: "Director" },
     { value: "shareholder", label: "Shareholder" },
 ];
 
 export const optionShareOwnership = [
+    { value: "director", label: "Director" },
     { value: "majority", label: "Majority Owner" },
     { value: "minority", label: "Minority Owner" },
 ];

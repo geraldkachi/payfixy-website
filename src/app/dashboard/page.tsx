@@ -2,6 +2,7 @@
 import React from 'react'
 import Sidebar from '@/components/Sidebar'
 import { useRouter } from 'next/navigation';
+import { getAdminDetails } from '@/utils/shared';
 
 const links = [
     { name: "Home", icon: "<HomeIcon />", path: "/home" },
@@ -10,6 +11,8 @@ const links = [
   ];
 const page = () => {
   const router = useRouter()
+
+  const user = getAdminDetails();
 
   return (
     <div className="flex">
@@ -20,7 +23,7 @@ const page = () => {
             <p className="mt-4">This is where your main content will go.</p>
 
             <div className="flex items-center justify-between">
-              <div></div>
+              <div>{user?.first_name}  {user?.last_name}</div>
 
               <div onClick={() => {
                 router.push('/kyc')

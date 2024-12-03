@@ -10,10 +10,12 @@ import { optionBankList } from '@/utils/data';
 const BankAccount = () => {
     const { count,increment, decrement } = useAppStore();
     const noOfSteps = 5
-    const completedSteps = count + 1;
+    const completedSteps = count;
+    // const completedSteps = count + 1;
   
     const handleStepClick = (index: number) => {
       useAppStore.setState({ count: index })
+      increment()
     };
     const formik = useFormik({
         initialValues: {
@@ -80,7 +82,7 @@ const BankAccount = () => {
             ))}
         </div>
         <p className="stepper-count text-[#94A0B4] text-xs">
-          Step <span className={`completed-count text-[#272848] dark:text-[#ffffff]`}>{completedSteps}</span> of {noOfSteps}
+          Step <span className={`completed-count text-[#272848]`}>{completedSteps}</span> of {noOfSteps}
         </p>
       </div>
     <div className="grid md:grid-cols-6 gap-4">

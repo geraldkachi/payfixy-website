@@ -70,9 +70,9 @@ interface InputProps {
     classLabel?: string;
     onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-    value?: string | number;
+    value?: string | number | undefined;
     multiline?: boolean; // New prop for multiline support
-    error?: string | boolean; // To handle error messages
+    error?: string | boolean | undefined;  // To handle error messages
     style?: React.CSSProperties;
     prefix?: React.ReactNode;
     suffix?: React.ReactNode;

@@ -2,11 +2,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
-// export const getToken = 
-// typeof window !== "undefined"
-//   ? window.localStorage.getItem("authToken")
-//   : null;;
-// Retrieve token from localStorage
+import jwt_decode from "jwt-decode";
+
+// Utility function to decode and get the expiry time of the token
+const getTokenExpiryTime = (token: string): number | null => {
+  try {
+    const decoded: any = jwt_decode(token);
+    return decoded?.exp ? decoded.exp * 1000 : null; // exp is in seconds, convert to milliseconds
+  } catch (error) {
+    console.error("Error decoding token:", error);
+    return null;
+  }
+};
+
+// Function to check if the token is expired or will expire in less than 10 minutes
+const isTokenExpiringSoon = (token: string): boolean => {
+  const expiryTime = getTokenExpiryTime(token);
+  if (!expiryTime) return false;
+  const currentTime = Date.now();
+  return (expiryTime - currentTime) <= 10 * 60 * 1000; // 10 minutes in milliseconds
+};
+
 export const getToken = (): string | null => {
   return typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
 };
@@ -26,20 +42,44 @@ export const instance = (
   });
 
   // Request interceptor
+  // base.interceptors.request.use(
+  //   // @ts-ignore
+  //   (config: AxiosRequestConfig) => {
+  //     const token = getToken();
+  //     if (token) {
+  //       config.headers = {
+  //         ...config.headers,
+  //         Authorization: `Bearer ${token}`,
+  //       };
+  //     }
+  //     return config;
+  //   },
+  //   (error) => Promise.reject(error)
+  // );
+
+  // Request interceptor
   base.interceptors.request.use(
-    // @ts-ignore
+    // @ts-ignore//+
     (config: AxiosRequestConfig) => {
-      const token = getToken();
-      if (token) {
-        config.headers = {
-          ...config.headers,
-          Authorization: `Bearer ${token}`,
-        };
-      }
-      return config;
-    },
+      const token = getToken();//+
+      if (token && isTokenExpiringSoon(token)) {
+        // If the token is expiring soon, refresh it before making the request//+
+        return refreshAuthToken().then((newToken) => {
+          if (config.headers) {//+
+            config.headers.Authorization = `Bearer ${newToken}`;//+
+          }//+
+          return config;//+
+        });//+
+      }//+
+      // If no token or token is fine, continue with the request//+
+      if (token && config.headers) {//+
+        config.headers.Authorization = `Bearer ${token}`;
+      }//+
+      return config;//+
+    },//+
     (error) => Promise.reject(error)
-  );
+  );//
+
 
   // Response interceptor
   base.interceptors.response.use(
@@ -52,12 +92,15 @@ export const instance = (
       ) {
         originalRequest._retry = true;
         const refreshToken = localStorage.getItem("refresh_token");
+        console.log(refreshToken, "refreshToken")
         if (refreshToken) {
           try {
             // Attempt to refresh token
             const { data } = await axios.post(`${baseURL}/refresh`, {
               refresh_token: refreshToken,
             });
+
+            console.log(data, 'refresh token')
 
             // Store new access token
             localStorage.setItem("authToken", data.access_token);
@@ -90,6 +133,24 @@ export const instance = (
 
 // export const getToken = () => cookies.load("access");
 
+// Refresh token function
+const refreshAuthToken = async (): Promise<string> => {
+  const refreshToken = localStorage.getItem("refresh_token");
+  if (!refreshToken) throw new Error("No refresh token available");
+
+  try {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/refresh`, {
+      refresh_token: refreshToken,
+    });
+
+    const { data } = response;
+    localStorage.setItem("authToken", data.access_token); // Store the new token
+    return data.access_token;
+  } catch (error) {
+    console.error("Error refreshing token:", error);
+    throw new Error("Failed to refresh token");
+  }
+};
 
   console.log('const', getToken())
 

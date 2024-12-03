@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import InputField from '@/components/Input'
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -6,34 +6,75 @@ import SelectInput from '@/components/Select';
 import Button from '@/components/Button';
 import useAppStore from '@/utils/appStore';
 import { optionGovtIdTypes, optionLocations, optionRoles, optionShareOwnership } from '@/utils/data';
+import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
+import { kycOwner } from '@/server/kyc/kyc';
 const BusinessOwner = () => {
-    const { count,increment, decrement } = useAppStore();
+    const { count, increment, decrement } = useAppStore();
     const noOfSteps = 5
-    const completedSteps = count + 1;
-  
+    const completedSteps = count;
+
     const handleStepClick = (index: number) => {
-      useAppStore.setState({ count: index })
+        useAppStore.setState({ count: index })
+        increment()
     };
+
+        const savedData = JSON.parse(localStorage.getItem("businessOwnerForm") || "{}");
+        // localStorage.removeItem("businessOwnerForm");
+        console.log(savedData, 'savedData business details')
+
+    const mutation = useMutation(kycOwner, {
+        retry: false,
+        onSuccess: (data) => {
+            increment()
+            toast.success(data?.message || "Business Owner Created successfully!");
+            console.log("successful:", data);
+        },
+        onError: (error: any) => {
+            toast.error(error?.message || "Failed to Create Business Owner.");
+
+            console.log(error, ' error')
+            // @ts-ignore
+            formik.setErrors({ api: error.response?.data?.message });
+        },
+    });
 
     const formik = useFormik({
         initialValues: {
-            role: "", // select
-            share_ownership: '', // select
-            fullname: '',
-            date_of_birth: '',
-            email_address: '',
-            phone_number: '',
-            bank_verification_number: '',
-            location: '', // select
-            home_address: "",
-            government_id: '',
-            government_id_number: "", // select
-            upload_selected_id: ''
+            // role: "", // select
+            // share_ownership: '', // select
+            // fullname: '',
+            // date_of_birth: '',
+            // email_address: '',
+            // phone_number: '',
+            // bank_verification_number: '',
+            // location: '', // select
+            // home_address: "",
+            // government_id: '',
+            // government_id_number: "", // select
+            // upload_selected_id: ''
+            kyc: 1,
+            role: savedData?.role || "",
+            share_ownership: savedData?.share_ownership || '',
+            // fullname: savedData?.fullname || '',
+            first_name: savedData?.first_name || '',
+            last_name: savedData?.last_name || '',
+            date_of_birth: savedData?.date_of_birth || '',
+            email_address: savedData?.email_address || '',
+            phone_number: savedData?.phone_number || '',
+            bank_verification_number: savedData?.bank_verification_number || '',
+            location: savedData?.location || '',
+            home_address: savedData?.home_address || '',
+            government_id: savedData?.government_id || '',
+            government_id_number: savedData?.government_id_number || '',
+            // upload_selected_id: savedData?.upload_selected_id || '',
         },
         validationSchema: Yup.object({
             role: Yup.string().required("Role is required"),
             share_ownership: Yup.string().required("Share ownership is required"),
-            fullname: Yup.string().required("Full name is required"),
+            // fullname: Yup.string().required("Full name is required"),
+            first_name: Yup.string().required("First name is required"),
+        last_name: Yup.string().required("Last name is required"),
             date_of_birth: Yup.date()
                 .required("Date of birth is required")
                 .typeError("Invalid date format"),
@@ -49,30 +90,21 @@ const BusinessOwner = () => {
             home_address: Yup.string().required("Home address is required"),
             government_id: Yup.string().required("Government ID is required"),
             government_id_number: Yup.string().required("Government ID number is required"),
-            upload_selected_id: Yup.string().required("Upload of selected ID is required"),
+            // upload_selected_id: Yup.string().required("Upload of selected ID is required"),
         }),
 
         onSubmit: async (values, { setSubmitting, setErrors }) => {
 
-
+            localStorage.setItem('businessOwnerForm', JSON.stringify(values)); // Save data to localStorage
+            console.log(values, 'business owner')
             try {
-                const response = await fetch('https://payfixy-website-5.onrender.com/main/onboarding/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(values),
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log('Business details successful', data);
-                    // router.push("/"); // Redirect on success
-                } else {
-                    const errorData = await response.json();
-                    // @ts-ignore
-                    setErrors({ api: errorData.message || 'Sign up failed' });
-                }
+                mutation.mutate(values, {
+                    onSuccess: (data) => {
+                        console.log(data, 'onSuccess data')
+                        localStorage.setItem('businessOwnerForm', JSON.stringify(values)); // Save data to localStorage
+                    }
+                })
+               
             } catch (error) {
                 // @ts-ignore
                 setErrors({ api: `An error occurred. Please try again later. ${error}` });
@@ -82,30 +114,44 @@ const BusinessOwner = () => {
         },
     });
 
+     // Load form data from localStorage on mount
+    //  useEffect(() => {
+    //     const savedData = localStorage.getItem('businessOwnerForm');
+    //     if (savedData) {
+    //         formik.setValues(JSON.parse(savedData));
+    //     }
+    // }, []);
+
+    // // Save form values to localStorage whenever they change
+    // useEffect(() => {
+    //     localStorage.setItem('businessOwnerForm', JSON.stringify(formik.values));
+    // }, [formik.values]);
+
+
 
     return (
         <div>
             <h1 className="text-2xl font-semibold leading-[32px] tracking-[-1]">Business owner</h1>
             <p className="mt-2 text-xs leading-4 tracking-[-.5px]">Enter authorised business owner, director or shareholder</p>
-              {/* stepper */}
-      <div className="text-[#94A0B4] flex flex-col items-start justify-start my-3">
-        <div className="stepper-div flex items-center my-3">
+            {/* stepper */}
+            <div className="text-[#94A0B4] flex flex-col items-start justify-start my-3">
+                <div className="stepper-div flex items-center my-3">
 
-          {Array(noOfSteps)
-            .fill(0)
-            .map((_, index) => (
-              <div
-                key={index}
-                className={`h-1 w-10 rounded-sm mx-1 ${index + 1 <= count ? "bg-[#A73636]" : "bg-gray-300"
-                  } cursor-pointer`}
-                onClick={() => handleStepClick(index)}
-              />
-            ))}
-        </div>
-        <p className="stepper-count text-[#94A0B4] text-xs">
-          Step <span className={`completed-count text-[#272848] dark:text-[#ffffff]`}>{completedSteps}</span> of {noOfSteps}
-        </p>
-      </div>
+                    {Array(noOfSteps)
+                        .fill(0)
+                        .map((_, index) => (
+                            <div
+                                key={index}
+                                className={`h-1 w-10 rounded-sm mx-1 ${index + 1 <= count ? "bg-[#A73636]" : "bg-gray-300"
+                                    } cursor-pointer`}
+                                onClick={() => handleStepClick(index)}
+                            />
+                        ))}
+                </div>
+                <p className="stepper-count text-[#94A0B4] text-xs">
+                    Step <span className={`completed-count text-[#272848]`}>{completedSteps}</span> of {noOfSteps}
+                </p>
+            </div>
 
             <div className="grid md:grid-cols-6 gap-4">
                 <div className="md:col-span-4">
@@ -117,6 +163,7 @@ const BusinessOwner = () => {
                             value={formik.values.role}
                             setValue={(value) => formik.setFieldValue("role", value)}
                             onBlur={formik.handleBlur}
+                            // @ts-ignore
                             error={formik.touched.role && formik.errors.role}
                         />
                         <SelectInput
@@ -126,9 +173,10 @@ const BusinessOwner = () => {
                             value={formik.values.share_ownership}
                             setValue={(value) => formik.setFieldValue("share_ownership", value)}
                             onBlur={formik.handleBlur}
+                            // @ts-ignore
                             error={formik.touched.share_ownership && formik.errors.share_ownership}
                         />
-                        <InputField
+                        {/* <InputField
                             id="fullname"
                             name="fullname"
                             label="Full Name"
@@ -136,8 +184,32 @@ const BusinessOwner = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.fullname}
+                            // @ts-ignore
                             error={formik.touched.fullname && formik.errors.fullname}
+                        /> */}
+                        <InputField
+                            id="first_name"
+                            name="first_name"
+                            label="First Name"
+                            placeholder="Enter first name"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.first_name}
+                             // @ts-ignore
+                            error={formik.touched.first_name && formik.errors.first_name}
                         />
+                        <InputField
+                            id="last_name"
+                            name="last_name"
+                            label="Last Name"
+                            placeholder="Enter last name"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.last_name}
+                             // @ts-ignore
+                            error={formik.touched.last_name && formik.errors.last_name}
+                        />
+
                         <InputField
                             id="date_of_birth"
                             name="date_of_birth"
@@ -147,6 +219,7 @@ const BusinessOwner = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.date_of_birth}
+                            // @ts-ignore
                             error={formik.touched.date_of_birth && formik.errors.date_of_birth}
                         />
                         <InputField
@@ -157,6 +230,7 @@ const BusinessOwner = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.email_address}
+                            // @ts-ignore
                             error={formik.touched.email_address && formik.errors.email_address}
                         />
                         <InputField
@@ -167,6 +241,7 @@ const BusinessOwner = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.phone_number}
+                            // @ts-ignore
                             error={formik.touched.phone_number && formik.errors.phone_number}
                         />
                         <InputField
@@ -177,6 +252,7 @@ const BusinessOwner = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.bank_verification_number}
+                            // @ts-ignore
                             error={formik.touched.bank_verification_number && formik.errors.bank_verification_number}
                         />
                         <SelectInput
@@ -186,6 +262,7 @@ const BusinessOwner = () => {
                             value={formik.values.location}
                             setValue={(value) => formik.setFieldValue("location", value)}
                             onBlur={formik.handleBlur}
+                            // @ts-ignore
                             error={formik.touched.location && formik.errors.location}
                         />
                         <InputField
@@ -196,6 +273,7 @@ const BusinessOwner = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.home_address}
+                            // @ts-ignore
                             error={formik.touched.home_address && formik.errors.home_address}
                         />
                         <SelectInput
@@ -205,6 +283,7 @@ const BusinessOwner = () => {
                             value={formik.values.government_id}
                             setValue={(value) => formik.setFieldValue("government_id", value)}
                             onBlur={formik.handleBlur}
+                            // @ts-ignore
                             error={formik.touched.government_id && formik.errors.government_id}
                         />
                         <InputField
@@ -215,16 +294,18 @@ const BusinessOwner = () => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.government_id_number}
+                            // @ts-ignore
                             error={formik.touched.government_id_number && formik.errors.government_id_number}
                         />
-                        <InputField
+                        {/* <InputField
                             id="upload_selected_id"
                             name="upload_selected_id"
                             label="Upload Selected ID"
                             type="file"
                             onChange={(e) => formik.setFieldValue("upload_selected_id", e.currentTarget.files?.[0])}
+                            // @ts-ignore
                             error={formik.touched.upload_selected_id && formik.errors.upload_selected_id}
-                        />
+                        /> */}
 
                         {/* {formik.errors.api && <div className="text-red-500">{formik.errors.api}</div>} */}
                         <div className="col-span-full w-full flex items-center md:justify-between">
@@ -237,10 +318,10 @@ const BusinessOwner = () => {
                             </Button>
 
 
-                            <Button type="submit" className='md:w-max px-10 md:px-14'
-                                onClick={() => increment()}
+                            <Button type="submit" isLoading={mutation.isLoading} disabled={mutation.isLoading} className='md:w-max px-10 md:px-14'
+                                // onClick={() => increment()}
                             >
-                                {formik.isSubmitting ? "Save & Continue" : "Save & Continue"}
+                                {mutation.isLoading ? "Save & Continue" : "Save & Continue"}
                             </Button>
 
                         </div>
