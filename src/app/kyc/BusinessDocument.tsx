@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
 import React, { useEffect } from 'react'
@@ -15,6 +16,7 @@ const LOCAL_STORAGE_KEY = "business_document_form";
 
 const BusinessDocument = () => {
     const user = getAdminDetails()
+    console.log( user?.uuid, ' user?.uuid')
     const { count,increment, decrement } = useAppStore();
     const noOfSteps = 5
     const completedSteps = count;
@@ -30,6 +32,7 @@ const BusinessDocument = () => {
           toast.success(data?.message ||  "Business Document Created successfully!");
           console.log("successful:", data);
         },
+        // @ts-ignore
         onError: (error: any) => {
             toast.error(error?.message || "Failed to Business Document.");
 
@@ -40,8 +43,8 @@ const BusinessDocument = () => {
       });
 
        // Load initial values from localStorage
-       const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
-        console.log(savedData, "Business Document Storage")
+      //  const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+      //   console.log(savedData, "Business Document Storage")
 
   const loadInitialValues = () => {
     const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -80,27 +83,29 @@ const BusinessDocument = () => {
 
         onSubmit: async (values, { setSubmitting, setErrors }) => {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(values));
-
-                console.log(values, "values Business Document ")
-                const formData = new FormData();
-                formData.append("kyc", values.kyc.toString());
-                formData.append("cac_reg_number", values.cac_reg_number);
-                formData.append("cac_document", values.cac_document as File);
-                formData.append(
-                    "memorandum_and_article_association",
-                  values.memorandum_and_article_association as File
-                );
-                // console.log(formData, "formData Business Document")
-          
+            
+            console.log(values, "values Business Document ")
+            const formData = new FormData();
+            formData.append("kyc", values.kyc.toString());
+            formData.append("cac_reg_number", values.cac_reg_number);
+            formData.append("cac_document", values.cac_document as File);
+            formData.append(
+              "memorandum_and_article_association",
+              values.memorandum_and_article_association as File
+            );
+            // console.log(formData, "formData Business Document")
+            
             try {
-                mutation.mutate(formData, {onSuccess: (data) => {
-                  console.log(data, 'onSuccess data')
-                },
-                onError: (error) => {
-                    toast.error('Failed to Create Business Documnet.');
-                    console.log('Error:', error);
-                    console.log(values, "values error");
-                    // @ts-ignore
+              mutation.mutate(formData, {onSuccess: (data) => {
+                console.log(data, 'onSuccess data')
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(values));
+              },
+              onError: (error) => {
+                toast.error('Failed to Create Business Documnet.');
+                console.log('Error:', error);
+                console.log(values, "values error");
+                // @ts-ignore
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(values));
                     formik.setErrors({ api: error.response?.data?.message });
                 }
             })
@@ -142,13 +147,12 @@ const BusinessDocument = () => {
             </p>
         </div>
      {/* @ts-ignore */}
-    {formik.errors.api && (
+    {/* {formik.errors.api && (
         <div className="text-red-500 bg-red-100 p-3 rounded-md text-center">
-             Error:
-             {/* @ts-ignore */}
-              {formik.errors.api}  
+             Error: {formik.errors.api}  
              </div>
-    )}
+    )} */}
+
 
     <div className="grid md:grid-cols-6 gap-4 mt-4">
         <div className="md:col-span-4">
@@ -181,9 +185,8 @@ const BusinessDocument = () => {
                     placeholder="Select File"
                     type='file'
                     // onChange={formik.handleChange}
-                    onChange={(e) =>
-                        formik.setFieldValue("cac_document", e.currentTarget.files?.[0] || null)
-                      }
+                    // @ts-ignore
+                    onChange={(e) =>formik.setFieldValue("cac_document", e.currentTarget.files?.[0] || null)}
                     onBlur={formik.handleBlur}
                     // value={formik.values.cac_document}
                 //    @ts-ignore
@@ -197,10 +200,8 @@ const BusinessDocument = () => {
                     type='file'
                     // onChange={formik.handleChange}
                     onChange={(e) =>
-                        formik.setFieldValue(
-                          "memorandum_and_article_association",
-                          e.currentTarget?.files?.[0] || null
-                        )
+                      // @ts-ignore
+                        formik.setFieldValue("memorandum_and_article_association", e.currentTarget?.files?.[0] || null)
                       }
                     onBlur={formik.handleBlur}
                     // value={formik.values.memorandum_and_article_association}

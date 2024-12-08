@@ -1,5 +1,6 @@
 
 interface IAdmin extends DefaultAttributes {
+  id: string | number
   email: string,
   password: string
   first_name: string,

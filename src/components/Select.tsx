@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import React, { ChangeEvent, useRef, useState, useEffect } from 'react';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 

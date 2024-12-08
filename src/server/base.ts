@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
-
+// @ts-ignore
 import jwt_decode from "jwt-decode";
 
 // Utility function to decode and get the expiry time of the token

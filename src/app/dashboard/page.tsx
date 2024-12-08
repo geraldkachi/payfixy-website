@@ -9,7 +9,7 @@ const links = [
     { name: "Profile", icon:" <UserIcon />", path: "/profile" },
     { name: "Settings", icon: "<CogIcon />", path: "/settings" },
   ];
-const page = () => {
+const Page = () => {
   const router = useRouter()
 
   const user = getAdminDetails();
@@ -37,4 +37,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

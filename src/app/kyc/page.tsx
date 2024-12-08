@@ -1,5 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
-import React, { useEffect } from 'react'
+// import React, { useEffect, useState } from 'react'
 import BusinessDetails from './BusinessDetails'
 import useAppStore from '@/utils/appStore';
 import BusinessDocument from './BusinessDocument';
@@ -7,37 +10,62 @@ import BankAccount from './BankAccount';
 import BusinessOwner from './BusinessOwner';
 import Summary from './Summary';
 import StepperAlph from './StepperAlph';
-import { toast } from 'react-toastify';
-import { useMutation } from 'react-query';
-import { kycStart } from '@/server/kyc/kyc';
-import { appLogout, getAdminDetails } from '@/utils/shared';
+// import { toast } from 'react-toastify';
+// import { useMutation } from 'react-query';
+// import { kycStart } from '@/server/kyc/kyc';
+// import { appLogout } from '@/utils/shared';
 
 const Page: React.FC = () => {
-  const user = getAdminDetails()
-console.log(user?.uuid)
-  const { count } = useAppStore();
-  useEffect(() => {
-    mutation.mutate({merchant: user?.uuid as string})
-    // mutation.mutate({merchant: user?.uuid as string})
-    return () => {
-      useAppStore.setState({ count: 1 })
-    }
-  }, [])
+  // const user = getAdminDetails()
+  // console.log(user, 'user saved object')
+  // const [user, setUser] = useState<Partial<IAdmin>>({});
 
-  const mutation = useMutation(kycStart, {
-    retry: false,
-    onSuccess: (data) => {
-      toast.success(data?.message ||  "Start Kyc Process!");
-      console.log("successful:", data);
-    },
-    onError: (error: any) => {
-        toast.error(error?.message || "Something went wrong. or Expired timeout");
-        // appLogout()
-      console.log( error, ' error')
-      // @ts-ignore
-      formik.setErrors({ api: error.response?.data?.message });
-    },
-  });
+
+  // function getAdminDetails(): Partial<IAdmin> {
+  //   if (typeof window !== "undefined") {
+  //     const adminDetails = localStorage.getItem("user-details");
+  //     return adminDetails ? JSON.parse(adminDetails) : null;
+  //   }
+  //   return {} as Partial<IAdmin>;
+  // }
+  
+  const { count } = useAppStore();
+
+  //  // Initialize user details safely
+  //  useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const adminDetails = getAdminDetails();
+  //     if (adminDetails) {
+  //       setUser(adminDetails);
+  //     }
+  //   }
+  // }, []);
+  
+  // const mutation = useMutation(kycStart, {
+  //   retry: false,
+  //   onSuccess: (data) => {
+  //     toast.success(data?.message ||  "Start Kyc Process!");
+  //     console.log("successful:", data);
+  //   },
+  //   // @ts-ignore
+  //   onError: (error: any) => {
+  //     toast.error(error?.message || "Something went wrong. or Expired timeout");
+  //     appLogout()
+  //     console.log( error, ' error')
+  //   },
+  // });
+  
+  // useEffect(() => {
+  //   return () => {
+  //     mutation.mutate({merchant: user?.id as number})
+  //   }
+  // }, [mutation, user?.id])
+
+  //   useEffect(() => {
+  //   if (user?.id) {
+  //     mutation.mutate({ merchant: user.id });
+  //   }
+  // }, [mutation, user]);
 
   return (
     <div className="flex overflow-y-scroll h-screen">

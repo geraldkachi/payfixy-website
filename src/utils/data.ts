@@ -58,6 +58,7 @@ export const optionShareOwnership = [
 
 export const optionGovtIdTypes = [
     { value: "national_id", label: "National ID" },
-    { value: "passport", label: "Passport" },
+    { value: "voters card", label: "Voters Card" },
     { value: "driver_license", label: "Driver's License" },
+    { value: "passport", label: "Passport" },
 ];

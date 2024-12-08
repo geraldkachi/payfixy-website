@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import React from 'react'
 import InputField from '@/components/Input'
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -9,7 +11,9 @@ import { optionGovtIdTypes, optionLocations, optionRoles, optionShareOwnership }
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import { kycOwner } from '@/server/kyc/kyc';
+import { getAdminDetails } from '@/utils/shared';
 const BusinessOwner = () => {
+    const user = getAdminDetails()
     const { count, increment, decrement } = useAppStore();
     const noOfSteps = 5
     const completedSteps = count;
@@ -30,6 +34,7 @@ const BusinessOwner = () => {
             toast.success(data?.message || "Business Owner Created successfully!");
             console.log("successful:", data);
         },
+        // @ts-ignore
         onError: (error: any) => {
             toast.error(error?.message || "Failed to Create Business Owner.");
 
@@ -39,21 +44,14 @@ const BusinessOwner = () => {
         },
     });
 
+    // const formatDateToISO = (date) => {
+    //     if (!date) return ""; 
+    //     return `${date}T00:00:00`;
+    // };
+
     const formik = useFormik({
         initialValues: {
-            // role: "", // select
-            // share_ownership: '', // select
-            // fullname: '',
-            // date_of_birth: '',
-            // email_address: '',
-            // phone_number: '',
-            // bank_verification_number: '',
-            // location: '', // select
-            // home_address: "",
-            // government_id: '',
-            // government_id_number: "", // select
-            // upload_selected_id: ''
-            kyc: 1,
+            kyc: user?.uuid ,
             role: savedData?.role || "",
             share_ownership: savedData?.share_ownership || '',
             // fullname: savedData?.fullname || '',
@@ -62,7 +60,7 @@ const BusinessOwner = () => {
             date_of_birth: savedData?.date_of_birth || '',
             email_address: savedData?.email_address || '',
             phone_number: savedData?.phone_number || '',
-            bank_verification_number: savedData?.bank_verification_number || '',
+            bvn: savedData?.bvn || '',
             location: savedData?.location || '',
             home_address: savedData?.home_address || '',
             government_id: savedData?.government_id || '',
@@ -82,7 +80,7 @@ const BusinessOwner = () => {
                 .email("Invalid email address")
                 .required("Email address is required"),
             phone_number: Yup.string().required("Phone number is required"),
-            bank_verification_number: Yup.string()
+            bvn: Yup.string()
                 .required("Bank verification number is required")
                 .min(11, "BVN must be 11 digits")
                 .max(11, "BVN must be 11 digits"),
@@ -92,22 +90,31 @@ const BusinessOwner = () => {
             government_id_number: Yup.string().required("Government ID number is required"),
             // upload_selected_id: Yup.string().required("Upload of selected ID is required"),
         }),
+        
 
         onSubmit: async (values, { setSubmitting, setErrors }) => {
-
-            localStorage.setItem('businessOwnerForm', JSON.stringify(values)); // Save data to localStorage
-            console.log(values, 'business owner')
+            const dateOfBirth = new Date(values.date_of_birth);
+            const formattedValues = {
+                ...values,
+                date_of_birth: dateOfBirth.toISOString(),
+            };
+            localStorage.setItem('businessOwnerForm', JSON.stringify(formattedValues)); // Save data to localStorage
+            console.log(formattedValues, 'business owner with updated date format');
+            // console.log(values, 'business owner')
             try {
+                // @ts-ignore
                 mutation.mutate(values, {
                     onSuccess: (data) => {
+                        increment()
                         console.log(data, 'onSuccess data')
-                        localStorage.setItem('businessOwnerForm', JSON.stringify(values)); // Save data to localStorage
+                        localStorage.setItem('businessOwnerForm', JSON.stringify(formattedValues)); // Save data to localStorage
                     }
                 })
-               
+                
             } catch (error) {
                 // @ts-ignore
                 setErrors({ api: `An error occurred. Please try again later. ${error}` });
+                localStorage.setItem('businessOwnerForm', JSON.stringify(formattedValues)); // Save data to localStorage
             } finally {
                 setSubmitting(false); // Ensure that the submitting state is always set back to false
             }
@@ -131,7 +138,7 @@ const BusinessOwner = () => {
 
     return (
         <div>
-            <h1 className="text-2xl font-semibold leading-[32px] tracking-[-1]">Business owner</h1>
+            <h1 className="text-2xl font-semibold leading-[32px] tracking-[-1]">Business Owner</h1>
             <p className="mt-2 text-xs leading-4 tracking-[-.5px]">Enter authorised business owner, director or shareholder</p>
             {/* stepper */}
             <div className="text-[#94A0B4] flex flex-col items-start justify-start my-3">
@@ -245,15 +252,15 @@ const BusinessOwner = () => {
                             error={formik.touched.phone_number && formik.errors.phone_number}
                         />
                         <InputField
-                            id="bank_verification_number"
-                            name="bank_verification_number"
+                            id="bvn"
+                            name="bvn"
                             label="Bank Verification Number"
                             placeholder="Enter BVN"
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
-                            value={formik.values.bank_verification_number}
+                            value={formik.values.bvn}
                             // @ts-ignore
-                            error={formik.touched.bank_verification_number && formik.errors.bank_verification_number}
+                            error={formik.touched.bvn && formik.errors.bvn}
                         />
                         <SelectInput
                             name="location"

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
 import React from 'react'
@@ -11,12 +12,6 @@ import { toast } from "react-toastify";
 import { useMutation } from 'react-query';
 import { kycApi } from '@/server/kyc/kyc';
 import { optionIndustryTypes, optionLocations, optionTransactionVolumes } from '@/utils/data';
-
-
-interface Option {
-    value: string;
-    label: string;
-}
 
 const BusinessDetails = () => {
     const { count, increment } = useAppStore();
@@ -42,6 +37,7 @@ console.log(savedData, 'savedData business details')
           toast.success(data?.message ||  "Business Detail Created successfully!");
           console.log("successful:", data);
         },
+        // @ts-ignore
         onError: (error: any) => {
             toast.error(error?.message || "Failed to Create Business Detail.");
 
@@ -106,9 +102,9 @@ console.log(savedData, 'savedData business details')
               }
         },
     });
-    const getFieldError = (touched: boolean | undefined, error: any): string | undefined => {
-        return touched && typeof error === "string" ? error : undefined;
-    };
+    // const getFieldError = (touched: boolean | undefined, error: any): string | undefined => {
+    //     return touched && typeof error === "string" ? error : undefined;
+    // };
 
     return (
         <div>

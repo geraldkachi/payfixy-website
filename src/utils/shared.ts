@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export const appLogout = () => {
     localStorage.clear();
     window.location.href = "/login";
@@ -38,15 +39,36 @@ export const appLogout = () => {
     return result;
   };
 
-  export const getAdminDetails = (): Partial<IAdmin> => {
-    let result;
-    try {
-      const userDetails = localStorage.getItem("user-details") || "{}";
-      return parseJson<Partial<IAdmin>>(userDetails);
-    } catch (error) {
-      result = {} as Partial<IAdmin>;
-    }
+  // export const getAdminDetails = (): Partial<IAdmin> => {
+  //   let result;
+  //   try {
+  //     const userDetails = typeof window !== "undefined" && localStorage.getItem("user-details") || "{}";
+  //     return parseJson<Partial<IAdmin>>(userDetails);
+  //   } catch (error) {
+  //     result = {} as Partial<IAdmin>;
+  //   }
   
-    return result;
-  };
+  //   return result;
+  // };
+
+  export function getAdminDetails(): Partial<IAdmin> {
+    if (typeof window !== "undefined") {
+      const adminDetails = localStorage.getItem("user-details");
+      return adminDetails ? JSON.parse(adminDetails) : null;
+    }
+    return {} as Partial<IAdmin>;
+  }
+  
+  // export const getAdminDetails = (): Partial<IAdmin> => {
+  //   try {
+  //     if (typeof window !== "undefined") {
+  //       const userDetails = localStorage.getItem("user-details") || "{}";
+  //       return parseJson<Partial<IAdmin>>(userDetails);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error parsing admin details from localStorage:", error);
+  //   }
+  
+  //   return {} as Partial<IAdmin>;
+  // };
   

@@ -151,7 +151,7 @@ const Login = () => {
         </div>
       </div>
 
-      <div className='hidden md:flex items-center flex-1 h-screen overflow-hidden'>
+      <div className='hidden md:flex items-center flex-1 h-screen overflow-hidden bg-[#A51D21]'>
         <img src="/login.svg" alt="" className="h-" />
       </div>
     </div>

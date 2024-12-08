@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import useAppStore from "@/utils/appStore";
 
 const StepperAlph = () => {

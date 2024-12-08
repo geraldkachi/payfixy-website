@@ -14,7 +14,8 @@ const Checkbox = ({ checked, onChange, label, className }: Props) => {
         checked={checked}
         onChange={onChange}
       />
-      <span className="checkbox-checkmark mr-4"></span>
+
+      <div className="checkbox-checkmark mr-4 w-[45px]"></div>
       {label && <span className="text-[]#474D66 text-[10px] leading-3 tracking-[-0.5px] font-normal break-words whitespace-pre-wrap">{label}</span>}
     </label>
   );

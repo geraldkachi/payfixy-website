@@ -9,7 +9,7 @@ export const login = async (body: { email: string; password: string }) => {
     .post("/main/login/", body);
     return data; // Successfully retrieved data
   } catch (error) {
-    next(error as AxiosError<{ message: any }>);
+    next(error as AxiosError<{ message: string }>);
   }
 };
 // export const login = async (body: Pick<{email: string, password: string}, "email" | "password">) => {
@@ -24,7 +24,7 @@ export const signUp = async (body: Pick<IAdmin, "email" | "password">) => {
       .catch((e: AxiosError<{ message: string }>) => next(e));
     return data
   };
-export const otp = async (body: Pick<IAdmin, "email" | "otp">) => {
+export const otp = async (body: Pick<IAdmin, "otp">) => {
     const { data,  } = await instance()
       .post(`/main/verify_email/`, body)
       .catch((e: AxiosError<{ message: string}>) => next(e));

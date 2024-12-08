@@ -62,7 +62,7 @@ const page = () => {
         console.log( error, ' error')
         console.log( error, ' error test')
         // @ts-ignore
-        toast.success(error?.message ||  "Failed!");
+        toast.error(error?.message ||  "Failed!");
 
         // @ts-ignore
         formik.setErrors({ api: error?.message });
@@ -220,10 +220,10 @@ const page = () => {
 
                                                 </div>
                                             </label>
-                                            <input ref={refS} type="radio" value={"for_profit"} checked={formik.values.business_type == "for_profit"} onChange={() => formik.setFieldValue("business_type", "for_profit")} className="cursor-pointer w-4 h-4 border-[#D9DDE3] mr-5" />
+                                            <input ref={refS} type="radio" value={"for_profit"} checked={formik.values.business_type == "for_profit"} onChange={() => formik.setFieldValue("business_type", "for_profit")} className="cursor-pointer  w-4 h-4 border-[#D9DDE3] mr-5" />
                                         </div>}
 
-                                        {formik.values.business_type && <div onClick={() => ref.current?.click()} className={`${formik.values.business_type == 'non_profit' ? "!border !border-[#A51D21] bg-[#FDF4F4]" : ""} neue flex items-center cursor-pointer pl-4 border border-[#D9DDE3] hover:border-red-600 rounded-lg my-3`}>
+                                        {formik.values.business_type && <div onClick={() => ref.current?.click()} className={`${formik.values.business_type == 'not_for_profit' ? "!border !border-[#A51D21] bg-[#FDF4F4]" : ""} neue flex items-center cursor-pointer pl-4 border border-[#D9DDE3] hover:border-red-600 rounded-lg my-3`}>
                                             <label htmlFor="bordered-radio-2" className="w-full py-2 mx-4 text-sm font-medium text-gray-900 cursor-pointer">
                                                 <div className="flex items-center justify-between text-[#003E51]">
                                                     <div>
@@ -232,7 +232,7 @@ const page = () => {
                                                     </div>
                                                 </div>
                                             </label>
-                                            <input {...{ ref }} type="radio" required value={"non-profit"} checked={formik.values.business_type === "non_profit"} onChange={() => formik.setFieldValue("business_type", "non_profit")} className="cursor-pointer w-4 h-4 border-[#D9DDE3] mr-5" />
+                                            <input {...{ ref }} type="radio" required value={"not_for_profit"} checked={formik.values.business_type === "not_for_profit"} onChange={() => formik.setFieldValue("business_type", "not_for_profit")} className="cursor-pointer w-4 h-4 border-[#D9DDE3] mr-5" />
                                         </div>}
                                     </div>
 
@@ -362,7 +362,7 @@ const page = () => {
                     </div>
                 </div>
             </div>
-            <div className='hidden md:flex items-center flex-1 h-screen overflow-hidden'>
+            <div className='hidden md:flex items-center flex-1 h-screen overflow-hidden bg-[#A51D21]'>
                 <img
 
                     src="/login.svg" alt="" className="h-" />
