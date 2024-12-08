@@ -47,7 +47,7 @@ const BusinessDocument = () => {
       //   console.log(savedData, "Business Document Storage")
 
   const loadInitialValues = () => {
-    const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const savedData = typeof window !== "undefined" ? localStorage.getItem(LOCAL_STORAGE_KEY) : "{}";
     return savedData
       ? JSON?.parse(savedData)
       : {

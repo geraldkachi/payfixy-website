@@ -19,7 +19,7 @@ const Summary = () => {
     useAppStore.setState({ count: index })
   };
 
-  const savedData = JSON.parse(localStorage.getItem("businessDetails") || "{}");
+  const savedData = typeof window !== "undefined" && JSON.parse(localStorage.getItem("businessDetails") || "{}");
 
   // Initialize formik with the retrieved data
   const formik = useFormik({

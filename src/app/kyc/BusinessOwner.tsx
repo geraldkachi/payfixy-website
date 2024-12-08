@@ -23,7 +23,7 @@ const BusinessOwner = () => {
         increment()
     };
 
-        const savedData = JSON.parse(localStorage.getItem("businessOwnerForm") || "{}");
+        const savedData = typeof window !== "undefined" && JSON.parse(localStorage.getItem("businessOwnerForm") || "{}");
         // localStorage.removeItem("businessOwnerForm");
         console.log(savedData, 'savedData business details')
 

@@ -24,7 +24,7 @@ const BusinessDetails = () => {
       increment()
     };
 
-const savedData = JSON.parse(localStorage.getItem("businessDetails") || "{}");
+const savedData = typeof window !== "undefined" && JSON.parse(localStorage.getItem("businessDetails") || "{}");
 // localStorage.removeItem("businessDetails");
 
 console.log(savedData, 'savedData business details')
