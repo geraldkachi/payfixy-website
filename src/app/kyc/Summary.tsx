@@ -20,6 +20,7 @@ const Summary = () => {
   };
 
   const savedData = typeof window !== "undefined" && JSON.parse(localStorage.getItem("businessDetails") || "{}");
+  const savedDataDoc = typeof window !== "undefined" && JSON.parse(localStorage.getItem("business_document_form") || "{}");
 
   // Initialize formik with the retrieved data
   const formik = useFormik({
@@ -31,6 +32,11 @@ const Summary = () => {
       business_location: savedData.business_location || "",
       expected_transaction_volume: savedData.expected_transaction_volume || "",
       business_description: savedData.business_description || "",
+      // Business Document Details
+      kyc: savedDataDoc.kyc || "",
+      cac_reg_number: savedDataDoc.cac_reg_number || "",
+      cac_document: savedDataDoc.cac_document || null,
+      memorandum_and_article_association: savedDataDoc.memorandum_and_article_association || null,
     },
     onSubmit: (values) => {
       console.log("Submitted Summary Data:", values);
@@ -127,6 +133,9 @@ const Summary = () => {
         </p>
       </div>
       <div className="grid md:grid-cols-6 gap-4">
+        <div className="col-span-full">
+        <div className="text-xl"> Business Details</div>
+        </div>
       <div className="md:col-span-4">
       {/* <div className="grid md:grid-cols-6 gap-4">
         <div className="md:col-span-3"> */}
@@ -191,11 +200,27 @@ const Summary = () => {
           style={{ height: "120px" }}
         />
 
+        <div className="col-span-full">
+          <div className="text-xl"> Business Documents</div>
+        </div>
+        <div className="col-span-full">
+          <InputField
+            id="cac_reg_number"
+            name="cac_reg_number"
+            label="CAC Registration Number"
+            placeholder="Enter CAC registration number"
+            type="text"
+            value={formik.values.cac_reg_number}
+            onChange={formik.handleChange}
+            className="border rounded px-3 py-2 w-full"
+          />
+        </div>
         <div className="flex justify-end col-span-full">
           <Button type="button" className="px-10 md:px-14">
             Confirm & Submit
           </Button>
         </div>
+
       </form>
       </div>
 {/* </div>
