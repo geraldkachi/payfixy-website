@@ -24,10 +24,12 @@ const BusinessDetails = () => {
       increment()
     };
 
-const savedData = typeof window !== "undefined" && JSON.parse(localStorage.getItem("businessDetails") || "{}");
-// localStorage.removeItem("businessDetails");
+    const savedData = 
+    typeof window !== "undefined" && localStorage.getItem("businessDetails")
+      ? JSON.parse(localStorage.getItem("businessDetails")!)
+      : {};    // localStorage.removeItem("businessDetails");
 
-console.log(savedData, 'savedData business details')
+    console.log(savedData, 'savedData business details')
 
 
     const mutation = useMutation(kycApi, {

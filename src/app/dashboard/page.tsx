@@ -28,7 +28,7 @@ const Page = () => {
               <div onClick={() => {
                 router.push('/kyc')
               }}>
-                KYC
+                Start KYC
               </div>
             </div>
       </div>

@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import BusinessDetails from './BusinessDetails'
 import useAppStore from '@/utils/appStore';
 import BusinessDocument from './BusinessDocument';
@@ -13,31 +14,14 @@ import StepperAlph from './StepperAlph';
 import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import { kycStart } from '@/server/kyc/kyc';
-import { appLogout } from '@/utils/shared';
+import { getAdminDetails } from '@/utils/shared';
 
 const Page: React.FC = () => {
-  const [user, setUser] = useState<Partial<IAdmin>>({});
+  const user = getAdminDetails();
 
-  function getAdminDetails(): Partial<IAdmin> {
-    if (typeof window !== "undefined") {
-      const adminDetails = localStorage.getItem("user-details");
-      return adminDetails ? JSON.parse(adminDetails) : null;
-    }
-    return {} as Partial<IAdmin>;
-  }
   
   const { count } = useAppStore();
 
-   // Initialize user details safely
-   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const adminDetails = getAdminDetails();
-      if (adminDetails) {
-        setUser(adminDetails);
-      }
-    }
-  }, []);
-  
   const mutation = useMutation(kycStart, {
     retry: false,
     onSuccess: (data) => {
@@ -47,22 +31,17 @@ const Page: React.FC = () => {
     // @ts-ignore
     onError: (error: any) => {
       toast.error(error?.message || "Something went wrong. or Expired timeout");
-      appLogout()
+      // appLogout()
       console.log( error, ' error')
     },
   });
-  
-  // useEffect(() => {
-  //   return () => {
-  //     mutation.mutate({merchant: user?.id as number})
-  //   }
-  // }, [mutation, user?.id])
 
-    useEffect(() => {
+  useEffect(() => {
     if (user?.id) {
       mutation.mutate({ merchant: user.id });
     }
-  }, [mutation, user]);
+  }, []); // Ensure empty dependency array
+  
 
   return (
     <div className="flex overflow-y-scroll h-screen">
