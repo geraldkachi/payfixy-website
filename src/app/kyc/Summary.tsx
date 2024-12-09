@@ -39,6 +39,23 @@ const Summary = () => {
       cac_reg_number: savedDataDoc.cac_reg_number || "",
       cac_document: savedDataDoc.cac_document || null,
       memorandum_and_article_association: savedDataDoc.memorandum_and_article_association || null,
+
+      //Business Owner 
+        // kyc: savedData?.uuid ,
+        role: savedData?.role || "",
+        share_ownership: savedData?.share_ownership || '',
+        // fullname: savedData?.fullname || '',
+        first_name: savedData?.first_name || '',
+        last_name: savedData?.last_name || '',
+        date_of_birth: savedData?.date_of_birth || '',
+        email_address: savedData?.email_address || '',
+        // phone_number: savedData?.phone_number || '',
+        bvn: savedData?.bvn || '',
+        location: savedData?.location || '',
+        home_address: savedData?.home_address || '',
+        government_id: savedData?.government_id || '',
+        government_id_number: savedData?.government_id_number || '',
+        // upload_selected_id: savedData?.upload_selected_id || '',
     },
     onSubmit: (values) => {
       console.log("Submitted Summary Data:", values);
@@ -217,15 +234,61 @@ const Summary = () => {
             className="border rounded px-3 py-2 w-full"
           />
         </div>
-        <div className="flex justify-between col-span-full w-max">
-          <div></div>
-          <Button type="button" onClick={() => {
-            router.push('/dashboard')
-          }} className="px-10 md:px-14">
-            Confirm & Submit
-          </Button>
-        </div>
 
+        <div className="col-span-full">
+          <div className="text-xl"> Business Owner</div>
+        </div>
+        
+
+        <InputField
+        id="role"
+        name="role"
+        label="Role"
+        placeholder="Enter role"
+        value={formik.values.role}
+        onChange={formik.handleChange}
+      />
+      <InputField
+        id="share_ownership"
+        name="share_ownership"
+        label="Share Ownership (%)"
+        placeholder="Enter share ownership"
+        value={formik.values.share_ownership}
+        onChange={formik.handleChange}
+      />
+      <InputField
+        id="first_name"
+        name="first_name"
+        label="First Name"
+        placeholder="Enter first name"
+        value={formik.values.first_name}
+        onChange={formik.handleChange}
+      />
+      <InputField
+        id="last_name"
+        name="last_name"
+        label="Last Name"
+        placeholder="Enter last name"
+        value={formik.values.last_name}
+        onChange={formik.handleChange}
+      />
+      <InputField
+        id="email_address"
+        name="email_address"
+        label="Email Address"
+        placeholder="Enter email address"
+        value={formik.values.email_address}
+        onChange={formik.handleChange}
+      />
+
+      <div className="flex justify-between col-span-full w-max">
+        <div></div>
+        <Button type="button" onClick={() => {
+          router.push('/dashboard')
+        }} className="px-10 md:px-14">
+          Confirm & Submit
+        </Button>
+      </div>
       </form>
       </div>
 {/* </div>

@@ -28,6 +28,18 @@ export const kycStart = async (body: Pick<{
   return data
 };
 
+// export const kycVerifyBvn = async (body: Pick<{
+//   bvnNumber: string,
+//   // "bvnNumber": "22182106897",
+//   firstname: string,
+//   lastname: string,
+// }, "bvnNumber">) => {
+//   const { data } = await instance()
+//     .post(`/kyc/verify-bvn/`, body)
+//     .catch((e: AxiosError<{ message: string }, {}>) => next(e));
+//   return data
+// };
+
 export const kycApi = async (body: Pick<{
   business_name: string,
   industry: string,
@@ -57,17 +69,12 @@ export const kycOwner = async (body: Pick<{
 export const kycVerifyBvn = async (body: Pick<{
 
     // "bvnNumber": "22182106897",
-    "bvnNumber": string | number,
+    bvnNumber: string | number,
     firstname: string ,
     lastname: string 
-
-  merchant: string | number
-  cac_reg_number: string | number
-  cac_document: string // the should be a pdf document
-  memorandum_and_article_association: string // the should be a pdf document
-}, "merchant" | "cac_reg_number">) => {
+}, "bvnNumber" | "firstname">) => {
   const { data } = await instance()
-    .post(`/kyc/verify-bvn//`, body)
+    .post(`/kyc/verify-bvn/`, body)
     .catch((e: AxiosError<{ message: string }, {}>) => next(e));
   return data
 };
