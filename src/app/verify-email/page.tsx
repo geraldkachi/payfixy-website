@@ -91,7 +91,7 @@ const VerifyEmail = () => {
     });
     formik.setFieldValue("otp", newOtp);
   };
-
+// console.log(emailSetter, 'OTP Verification')
   return (
     <div className='flex items-start flex-1 h-screen'>
 

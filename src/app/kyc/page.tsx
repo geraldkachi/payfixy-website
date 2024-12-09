@@ -19,7 +19,6 @@ import { getAdminDetails } from '@/utils/shared';
 const Page: React.FC = () => {
   const user = getAdminDetails();
 
-  
   const { count } = useAppStore();
 
   const mutation = useMutation(kycStart, {
