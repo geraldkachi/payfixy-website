@@ -3,7 +3,6 @@
 /* eslint-disable @next/next/no-img-element */
 
 "use client"
-import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Button from "@/components/Button";
@@ -12,22 +11,11 @@ import { otp } from "@/server/admin";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
-// const emailSetter = localStorage.getItem("email");
-// console.log(emailSetter, 'emailSetter')
-// const domain = emailSetter?.split("@")[1];
 
 const VerifyEmail = () => {
   const router = useRouter();
-  const [emailSetter, setEmailSetter] = useState<string | null>(null);
-  const [domain, setDomain] = useState<string | null>(null);
-  useEffect(() => {
-    // Access localStorage after the component mounts
-    const email = localStorage.getItem("email");
-    setEmailSetter(email);
-    if (email) {
-      setDomain(email.split("@")[1]);
-    }
-  }, []);
+  const emailSetter = typeof window !== "undefined" ? localStorage.getItem("email") : '';
+  const domain = emailSetter?.split("@")[1];
 
   const mutation = useMutation(otp, {
     onSuccess: (data) => {
@@ -60,6 +48,10 @@ const VerifyEmail = () => {
         .max(6, "Only 6 fields allowed"),
     }),
     onSubmit: (values) => {
+      if (!emailSetter) {
+        toast.error("Email is missing.");
+        return;
+      }
       const otp = values.otp.join(""); 
       const payload = {
         email: emailSetter,

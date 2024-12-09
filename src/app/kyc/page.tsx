@@ -16,10 +16,7 @@ import { kycStart } from '@/server/kyc/kyc';
 import { appLogout } from '@/utils/shared';
 
 const Page: React.FC = () => {
-  // const user = getAdminDetails()
-  // console.log(user, 'user saved object')
   const [user, setUser] = useState<Partial<IAdmin>>({});
-
 
   function getAdminDetails(): Partial<IAdmin> {
     if (typeof window !== "undefined") {

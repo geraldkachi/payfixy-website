@@ -59,16 +59,3 @@ export const appLogout = () => {
     return {} as Partial<IAdmin>;
   }
   
-  // export const getAdminDetails = (): Partial<IAdmin> => {
-  //   try {
-  //     if (typeof window !== "undefined") {
-  //       const userDetails = localStorage.getItem("user-details") || "{}";
-  //       return parseJson<Partial<IAdmin>>(userDetails);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error parsing admin details from localStorage:", error);
-  //   }
-  
-  //   return {} as Partial<IAdmin>;
-  // };
-  
