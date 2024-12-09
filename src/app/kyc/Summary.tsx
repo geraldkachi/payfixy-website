@@ -5,12 +5,14 @@ import InputField from '@/components/Input';
 // import { kycApi } from '@/server/kyc/kyc';
 import useAppStore from '@/utils/appStore';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
 import React from 'react'
 // import { useMutation } from 'react-query';
 // import { toast } from 'react-toastify';
 // import * as Yup from "yup";
 
 const Summary = () => {
+  const router = useRouter();
   const { count } = useAppStore();
   const noOfSteps = 5
   // const arrayOfSteps = [...Array(noOfSteps)];
@@ -215,8 +217,11 @@ const Summary = () => {
             className="border rounded px-3 py-2 w-full"
           />
         </div>
-        <div className="flex justify-end col-span-full">
-          <Button type="button" className="px-10 md:px-14">
+        <div className="flex justify-between col-span-full w-max">
+          <div></div>
+          <Button type="button" onClick={() => {
+            router.push('/dashboard')
+          }} className="px-10 md:px-14">
             Confirm & Submit
           </Button>
         </div>
